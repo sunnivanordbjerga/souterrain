@@ -2,6 +2,11 @@
 
 *A simple narrative dungeon crawler inspired by games like
 Esoteric Ebb, RoadWarden and Dungeons & Dragons.*
+
+---
+## Status
+Completed as part of INF101 (Spring 2026)
+
 ---
 
 ## Gameplay
