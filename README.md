@@ -83,7 +83,7 @@ Left-click on the choice you want as they appear
 ---
 
 ## Authors
-* Sunniva Nord Bjerga
+Sunniva Nord Bjerga
 
 ## Credits
 No external contributors as of April 2026
