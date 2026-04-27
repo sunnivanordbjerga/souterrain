@@ -19,11 +19,17 @@ public abstract class AbstractNode implements Node {
      * Creates an {@link AbstractNode} with the given text
      * and an empty list of {@link Choice}s.
      *
-     * @param text the text corresponding to this node
+     * @param text the text corresponding to this node; cannot be blank
+     * @throws NullPointerException if text is null
+     * @throws IllegalArgumentException if text is blank
      */
     public AbstractNode(String text) {
-        this.text = text;
+        this.text = Objects.requireNonNull(text, "Text cannot be null");
         this.choices = new ArrayList<>();
+
+        if(text.isBlank()){
+            throw new IllegalArgumentException("Text cannot be blank");
+        }
     }
 
     @Override
@@ -47,6 +53,5 @@ public abstract class AbstractNode implements Node {
     @Override
     public void onEnter(Game game) {
         game.log(text);
-        //Base nodes have no additional logic
     }
 }
