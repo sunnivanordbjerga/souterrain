@@ -46,6 +46,7 @@ public abstract class AbstractNode implements Node {
 
     @Override
     public void onEnter(Game game) {
+        game.log(text);
         //Base nodes have no additional logic
     }
 }
