@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>no.uib.inf101</groupId>
-    <artifactId>Souterrain</artifactId>
+    <artifactId>souterrain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Souterrain</name>
