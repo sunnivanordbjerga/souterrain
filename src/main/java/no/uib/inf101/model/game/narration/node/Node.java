@@ -27,8 +27,10 @@ public interface Node {
 
     /**
      * Adds an option to the list of {@link Choice}s.
+     * Ignores duplicates.
      *
      * @param choice the choice to add
+     * @throws NullPointerException if choice is null
      */
     void addChoice(Choice choice);
 
