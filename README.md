@@ -2,6 +2,7 @@
 
 *A simple narrative dungeon crawler inspired by games like
 Esoteric Ebb, RoadWarden and Dungeons & Dragons.*
+
 ---
 
 ## Gameplay
