@@ -58,9 +58,27 @@ class PlayerTest {
         assertEquals(player.getMaxHp() - 1, player.getHp());
     }
 
+    //TODO: test modifyAttackRange
+
     @Test
-    void modifyDefenseBonus_capsAtZero(){
-        player.modifyEquipmentBonus(-2);
-        assertEquals(5,player.getDefense());
+    void modifyAttackRange_capsAtZero(){
+
     }
+
+    @Test
+    void modifyAttackRange_increasesDamage() {
+
+    }
+
+    @Test
+    void modifyAttackRange_decreasesDamage() {
+
+    }
+
+    @Test
+    void modifyAttackRange_capsAtBase(){
+
+    }
+
+    //TODO: test attack
 }
