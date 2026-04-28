@@ -5,29 +5,39 @@ import no.uib.inf101.model.entity.Attacker;
 import no.uib.inf101.model.entity.Entity;
 import no.uib.inf101.model.game.AttackResult;
 
+import java.util.Random;
+
 /**
  * Represents the player controlled character.
  */
 public class Player extends AbstractEntity implements Attacker {
-    private int defenseRating;
+    private static final int BASE_DEFENSE = 5;
+    private static final int BASE_MIN_DAMAGE = 4;
+    private static final int BASE_MAX_DAMAGE = 7;
+    private int defenseBonus;
+    private int damageBonus;
+
 
     /**
      * Creates a new {@link Player}
      */
     public Player() {
         super("You", 50);
-        this.defenseRating = 5;
+        this.defenseBonus = 0;
+        this.damageBonus = 0;
     }
 
     @Override
     public void takeDamage(int damage) {
-        int takenDamage = Math.max(0, damage - defenseRating);
+        int takenDamage = Math.max(1, damage - getDefense());
         hp = Math.max(0, hp - takenDamage);
     }
 
     @Override
-    public AttackResult attack(Entity target) {
-        return new AttackResult(0);
+    public AttackResult attack(Entity target, Random random) {
+        int damage = random.nextInt(BASE_MIN_DAMAGE + damageBonus, BASE_MAX_DAMAGE + damageBonus + 1);
+        target.takeDamage(damage);
+        return new AttackResult(damage);
     }
 
     /**
@@ -41,11 +51,30 @@ public class Player extends AbstractEntity implements Attacker {
     }
 
     /**
-     * Changes the {@link Player}'s defense rating by the given amount
+     * Returns the sum of the {@link Player}s base defense and any equipment bonuses.
+     *
+     * @return the player's total defense
+     */
+    public int getDefense() {
+        return BASE_DEFENSE + defenseBonus;
+    }
+
+    /**
+     * Changes the {@link Player}'s equipment bonus by the given amount
      *
      * @param changeAmount the amount to increase or decrease the defense rating by
      */
-    public void setDefenseRating(int changeAmount) {
-        defenseRating += changeAmount;
+    public void modifyEquipmentBonus(int changeAmount) {
+        defenseBonus = Math.max(0, defenseBonus + changeAmount);
+    }
+
+    /**
+     * Changes the {@link Player}'s attack range by the given range,
+     * capping at the base damage.
+     *
+     * @param changeAmount the amount to increase or decrease to the min and max damage by
+     */
+    public void modifyAttackRange(int changeAmount){
+        damageBonus = Math.max(0, damageBonus + changeAmount);
     }
 }
