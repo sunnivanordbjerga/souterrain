@@ -49,7 +49,7 @@ public class SkillCheckNode extends AbstractNode {
     public void onEnter(Game game) {
         super.onEnter(game);
 
-        boolean success = game.getRandom().nextInt(MAX_SUCCESS_RESULT) <= successChance;
+        boolean success = game.getRandom().nextInt(MAX_SUCCESS_RESULT) < successChance;
 
         game.setCurrentNode(success ? successNode : failureNode);
     }
