@@ -25,4 +25,5 @@ class EnemyTest {
         assertThrows(IllegalArgumentException.class, () -> new Enemy(" ",3,2,5));
     }
 
+    //TODO: test attack
 }
