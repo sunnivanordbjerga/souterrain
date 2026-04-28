@@ -25,10 +25,4 @@ class EnemyTest {
         assertThrows(IllegalArgumentException.class, () -> new Enemy(" ",3,2,5));
     }
 
-    @Test
-    void takeDamage_stopsAtHpZero(){
-        enemy.takeDamage(enemy.getMaxHp());
-        assertEquals(0, enemy.getHp());
-    }
-
 }

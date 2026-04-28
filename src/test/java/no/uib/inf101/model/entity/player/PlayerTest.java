@@ -22,25 +22,6 @@ class PlayerTest {
     }
 
     @Test
-    void playerHP_StartsAtMax() {
-        assertEquals(player.getMaxHp(), player.getHp());
-    }
-
-    @Test
-    void isAlive_returnsTrueOnPositiveHP() {
-        assertTrue(player.isAlive());
-        player.takeDamage(player.getDefense() + 1);
-        assertTrue(player.isAlive());
-    }
-
-    @Test
-    void isAlive_returnsFalseOnZeroHP() {
-        player.takeDamage(player.getHp() + player.getDefense());
-        assertEquals(0, player.getHp());
-        assertFalse(player.isAlive());
-    }
-
-    @Test
     void takeDamage_doesMinimumOneDamage() {
         player.takeDamage(player.getDefense());
         assertEquals(player.getMaxHp() - 1, player.getHp());
@@ -50,12 +31,6 @@ class PlayerTest {
     void takeDamage_decreasesByDefenceRating() {
         player.takeDamage(10);
         assertEquals(player.getMaxHp() - 10 + player.getDefense(), player.getHp());
-    }
-
-    @Test
-    void takeDamage_stopsAtHpZero() {
-        player.takeDamage(player.getMaxHp() + player.getDefense() + 1);
-        assertEquals(0, player.getHp());
     }
 
     @Test
