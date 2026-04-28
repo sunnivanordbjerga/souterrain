@@ -1,6 +1,7 @@
 package no.uib.inf101.model.game;
 
 import no.uib.inf101.controller.ControllableGame;
+import no.uib.inf101.model.entity.enemy.Enemy;
 import no.uib.inf101.model.entity.player.Player;
 import no.uib.inf101.model.game.narration.StoryBuilder;
 import no.uib.inf101.model.game.narration.node.Node;
@@ -68,6 +69,11 @@ public class Game implements ControllableGame, ViewableGame {
      */
     public void setCurrentNode(Node node) {
         this.currentNode = node;
+    }
+
+    public boolean resolveCombat(Enemy enemy){
+        return false;
+        //TODO
     }
 
     /**
