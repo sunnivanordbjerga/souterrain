@@ -44,7 +44,7 @@ public abstract class AbstractNode implements Node {
 
     @Override
     public void addChoice(Choice choice) {
-        Objects.requireNonNull(choice, "No choice provided");
+        Objects.requireNonNull(choice, "Choice cannot be null");
         if (!choices.contains(choice)) {
             choices.add(choice);
         }
@@ -52,6 +52,7 @@ public abstract class AbstractNode implements Node {
 
     @Override
     public void onEnter(Game game) {
+        Objects.requireNonNull(game, "Game cannot be null");
         game.log(text);
     }
 }
