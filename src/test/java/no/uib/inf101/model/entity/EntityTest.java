@@ -9,16 +9,23 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests {@link AbstractEntity} and {@link Entity} by extension.
  */
 public class EntityTest {
-    TestEntity entity;
+
+    private static class DummyEntity extends AbstractEntity {
+        DummyEntity() {
+            super("Dummy", 10);
+        }
+    }
+
+    DummyEntity entity;
 
     @BeforeEach
     void setup() {
-        this.entity = new TestEntity();
+        this.entity = new DummyEntity();
     }
 
     @Test
     void entitySetsDisplayName() {
-        assertEquals("TestEntity", entity.getDisplayName());
+        assertEquals("Dummy", entity.getDisplayName());
     }
 
     @Test
