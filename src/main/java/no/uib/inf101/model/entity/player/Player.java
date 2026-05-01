@@ -78,7 +78,7 @@ public class Player extends AbstractEntity implements Attacker {
      *
      * @param changeAmount the amount to increase or decrease to the min and max damage by
      */
-    public void modifyAttackRange(int changeAmount){
+    public void modifyAttackRange(int changeAmount) {
         damageBonus = Math.max(0, damageBonus + changeAmount);
     }
 }
