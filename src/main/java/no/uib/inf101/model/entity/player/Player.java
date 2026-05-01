@@ -35,9 +35,13 @@ public class Player extends AbstractEntity implements Attacker {
 
     @Override
     public AttackResult attack(Entity target, Random random) {
-        int damage = random.nextInt(BASE_MIN_DAMAGE + damageBonus, BASE_MAX_DAMAGE + damageBonus + 1);
-        target.takeDamage(damage);
-        return new AttackResult(damage);
+        int minDamage = BASE_MIN_DAMAGE + damageBonus;
+        int maxDamage = BASE_MAX_DAMAGE + damageBonus;
+
+        int damageDealt = random.nextInt(minDamage, maxDamage + 1);
+        target.takeDamage(damageDealt);
+
+        return new AttackResult(damageDealt);
     }
 
     /**
