@@ -1,7 +1,6 @@
 package no.uib.inf101.model.entity.enemy;
 
 import no.uib.inf101.model.entity.player.Player;
-import no.uib.inf101.model.game.AttackResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,9 +36,9 @@ class EnemyTest {
 
         int before = grunt.getHp();
 
-        AttackResult result = enemy.attack(grunt, random);
+        int result = enemy.attack(grunt, random);
 
-        assertEquals(before - result.damageDealt(), grunt.getHp());
+        assertEquals(before - result, grunt.getHp());
     }
 
     @Test
@@ -47,9 +46,9 @@ class EnemyTest {
         Random random = new Random(1);
         Player hero = new Player();
 
-        AttackResult result = enemy.attack(hero, random);
+        int result = enemy.attack(hero, random);
 
-        assertTrue(result.damageDealt() >= 2);
-        assertTrue(result.damageDealt() <= 8);
+        assertTrue(result >= 2);
+        assertTrue(result <= 8);
     }
 }

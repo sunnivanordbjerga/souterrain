@@ -1,7 +1,5 @@
 package no.uib.inf101.model.entity;
 
-import no.uib.inf101.model.game.AttackResult;
-
 import java.util.Random;
 
 /**
@@ -15,7 +13,7 @@ public interface Attacker {
      *
      * @param target the entity to attack.
      * @param random a random instance, used to generate damage within the attack range
-     * @return an {@link AttackResult}, containing details about the attack
+     * @return the amount of damage dealt
      */
-    AttackResult attack(Entity target, Random random);
+    int attack(Entity target, Random random);
 }

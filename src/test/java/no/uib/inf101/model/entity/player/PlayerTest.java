@@ -1,7 +1,6 @@
 package no.uib.inf101.model.entity.player;
 
 import no.uib.inf101.model.entity.enemy.Enemy;
-import no.uib.inf101.model.game.AttackResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,9 +49,9 @@ class PlayerTest {
 
         int before = grunt.getHp();
 
-        AttackResult result = player.attack(grunt, random);
+        int result = player.attack(grunt, random);
 
-        assertEquals(before - result.damageDealt(), grunt.getHp());
+        assertEquals(before - result, grunt.getHp());
     }
 
     @Test
@@ -60,7 +59,7 @@ class PlayerTest {
         Random random = new Random(1);
         Enemy grunt = new Enemy("Grunt", 10, 2, 5);
 
-        int result = player.attack(grunt, random).damageDealt();
+        int result = player.attack(grunt, random);
         assertTrue(result >= 4 && result <= 7);
     }
 
@@ -93,12 +92,12 @@ class PlayerTest {
         Enemy grunt = new Enemy("Grunt", 10, 2, 5);
 
         Random random = new Random(1);
-        int before = player.attack(grunt, random).damageDealt();
+        int before = player.attack(grunt, random);
 
         player.modifyAttackRange(2);
 
         random = new Random(1);
-        int after = player.attack(grunt, random).damageDealt();
+        int after = player.attack(grunt, random);
         assertEquals(before + 2, after);
     }
 
@@ -107,13 +106,13 @@ class PlayerTest {
         Enemy grunt = new Enemy("Grunt", 10, 2, 5);
 
         Random random = new Random(1);
-        int before = player.attack(grunt, random).damageDealt();
+        int before = player.attack(grunt, random);
 
         player.modifyAttackRange(5);
         player.modifyAttackRange(-2);
 
         random = new Random(1);
-        int after = player.attack(grunt, random).damageDealt();
+        int after = player.attack(grunt, random);
         assertEquals(before + 5 - 2, after);
     }
 
@@ -122,12 +121,12 @@ class PlayerTest {
         Enemy grunt = new Enemy("Grunt", 10, 2, 5);
 
         Random random = new Random(1);
-        int before = player.attack(grunt, random).damageDealt();
+        int before = player.attack(grunt, random);
 
         player.modifyAttackRange(-2);
 
         random = new Random(1);
-        int after = player.attack(grunt, random).damageDealt();
+        int after = player.attack(grunt, random);
 
         assertEquals(before, after);
     }

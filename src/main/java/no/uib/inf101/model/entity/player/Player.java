@@ -3,7 +3,6 @@ package no.uib.inf101.model.entity.player;
 import no.uib.inf101.model.entity.AbstractEntity;
 import no.uib.inf101.model.entity.Attacker;
 import no.uib.inf101.model.entity.Entity;
-import no.uib.inf101.model.game.AttackResult;
 
 import java.util.Random;
 
@@ -34,14 +33,14 @@ public class Player extends AbstractEntity implements Attacker {
     }
 
     @Override
-    public AttackResult attack(Entity target, Random random) {
+    public int attack(Entity target, Random random) {
         int minDamage = BASE_MIN_DAMAGE + damageBonus;
         int maxDamage = BASE_MAX_DAMAGE + damageBonus;
 
         int damageDealt = random.nextInt(minDamage, maxDamage + 1);
         target.takeDamage(damageDealt);
 
-        return new AttackResult(damageDealt);
+        return damageDealt;
     }
 
     /**
