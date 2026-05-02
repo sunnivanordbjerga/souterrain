@@ -3,7 +3,7 @@ package no.uib.inf101.model.entity;
 import java.util.Objects;
 
 /**
- * A base implementation of {@link Entity}, common functionality
+ * Base implementation of {@link Entity}, defining common behavior,
  * like managing health points.
  */
 public abstract class AbstractEntity implements Entity {
@@ -16,7 +16,7 @@ public abstract class AbstractEntity implements Entity {
      *
      * @param displayName the entity's display name, shown in related log messages; cannot be blank
      * @param maxHp       the entity's maximum health points; must be positive
-     * @throws NullPointerException if displayName is null
+     * @throws NullPointerException     if displayName is null
      * @throws IllegalArgumentException if displayName is blank
      * @throws IllegalArgumentException if maxHp <= 0
      */
@@ -24,10 +24,10 @@ public abstract class AbstractEntity implements Entity {
         this.displayName = Objects.requireNonNull(displayName, "DisplayName cannot be null");
         this.maxHp = maxHp;
 
-        if(displayName.isBlank()){
+        if (displayName.isBlank()) {
             throw new IllegalArgumentException("DisplayName cannot be blank");
         }
-        if(maxHp <= 0){
+        if (maxHp <= 0) {
             throw new IllegalArgumentException("MaxHP must be a positive number");
         }
         this.hp = maxHp;

@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * A {@link Node} with a success/failure outcome.
  * <p>
- * The resulting text and next node is determined based on a random
+ * The resulting next node is determined based on a random
  * "dice roll" and successChance between 0 (guaranteed failure)
  * and 100 (guaranteed success).
  */
@@ -25,7 +25,7 @@ public class SkillCheckNode extends AbstractNode {
      * @param successNode   the {@link Node} to proceed to on success
      * @param failureNode   the {@link Node} to proceed to on failure
      * @param successChance the chance of success (0-100)
-     * @throws NullPointerException     if any arguments are null
+     * @throws NullPointerException     if text or nodes are null
      * @throws IllegalArgumentException if successChance is not between 0-100
      * @throws IllegalArgumentException if baseText is blank
      */

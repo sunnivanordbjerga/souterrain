@@ -17,8 +17,8 @@ public class Enemy extends AbstractEntity implements Attacker {
     /**
      * Creates a new {@link Enemy} with the given max HP and damage range.
      *
-     * @param displayName the enemy's display name, shown in related log messages
-     * @param maxHp       the enemy's maximum health points
+     * @param displayName this enemy's display name, shown in related log messages
+     * @param maxHp       this enemy's maximum health points
      * @param minDamage   the minimum damage amount this enemy can deal
      * @param maxDamage   the maximum damage amount this enemy can deal
      */

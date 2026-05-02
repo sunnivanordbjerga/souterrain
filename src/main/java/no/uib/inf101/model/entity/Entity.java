@@ -1,7 +1,7 @@
 package no.uib.inf101.model.entity;
 
 /**
- * Represents a general game entity
+ * Represents a general game entity, like a player, object or NPC.
  */
 public interface Entity {
 
@@ -27,7 +27,7 @@ public interface Entity {
     int getMaxHp();
 
     /**
-     * Reduces the entity's current health points.
+     * Reduces the entity's current health points, capping at 0.
      *
      * @param damage the amount to reduce the entity's health points by
      */
