@@ -10,6 +10,7 @@ import java.util.Random;
  * Represents the player controlled character.
  */
 public class Player extends AbstractEntity implements Attacker {
+    private final Random random;
     private static final int BASE_DEFENSE = 5;
     private static final int BASE_MIN_DAMAGE = 4;
     private static final int BASE_MAX_DAMAGE = 7;
@@ -20,8 +21,9 @@ public class Player extends AbstractEntity implements Attacker {
     /**
      * Creates a new {@link Player}
      */
-    public Player() {
+    public Player(Random random) {
         super("You", 50);
+        this.random = random;
         this.defenseBonus = 0;
         this.damageBonus = 0;
     }
@@ -33,7 +35,7 @@ public class Player extends AbstractEntity implements Attacker {
     }
 
     @Override
-    public int attack(Entity target, Random random) {
+    public int attack(Entity target) {
         int minDamage = BASE_MIN_DAMAGE + damageBonus;
         int maxDamage = BASE_MAX_DAMAGE + damageBonus;
 

@@ -10,6 +10,7 @@ import java.util.Random;
  * Represents a basic enemy, with no additional abilities.
  */
 public class Enemy extends AbstractEntity implements Attacker {
+    private final Random random;
     private final int minDamage;
     private final int maxDamage;
 
@@ -21,14 +22,15 @@ public class Enemy extends AbstractEntity implements Attacker {
      * @param minDamage   the minimum damage amount this enemy can deal
      * @param maxDamage   the maximum damage amount this enemy can deal
      */
-    public Enemy(String displayName, int maxHp, int minDamage, int maxDamage) {
+    public Enemy(String displayName, int maxHp, int minDamage, int maxDamage, Random random) {
         super(displayName, maxHp);
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
+        this.random = random;
     }
 
     @Override
-    public int attack(Entity target, Random random) {
+    public int attack(Entity target) {
         int damage = random.nextInt(minDamage, maxDamage + 1);
         target.takeDamage(damage);
 
