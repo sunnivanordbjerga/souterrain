@@ -1,6 +1,5 @@
 package no.uib.inf101.model.loot;
 
-import no.uib.inf101.model.game.Game;
 import no.uib.inf101.model.loot.consumable.Consumable;
 import no.uib.inf101.model.loot.consumable.HealthPotion;
 import no.uib.inf101.model.loot.equipable.Equipable;
@@ -8,7 +7,6 @@ import no.uib.inf101.model.loot.equipable.EquipmentType;
 import no.uib.inf101.model.loot.equipable.HollowHelm;
 import no.uib.inf101.model.loot.equipable.WolfsTooth;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,17 +15,16 @@ import java.util.Random;
  */
 public class LootFactory {
     private final Random random;
-    private final List<Consumable> consumables;
+    private final List<Loot> loot;
 
     /**
      * Creates an {@link LootFactory}, holding a list of items for random selection.
      *
-     * @param game the game, holding the shared random instance
+     * @param random the shared random instance
      */
-    public LootFactory(Game game) {
-        this.random = game.getRandom();
-        this.consumables = new ArrayList<>();
-        initConsumables();
+    public LootFactory(Random random) {
+        this.random = random;
+        this.loot = initLootTable();
     }
 
     /**
@@ -35,9 +32,9 @@ public class LootFactory {
      *
      * @return a random consumable
      */
-    public Consumable getRandomConsumable() {
-        int index = random.nextInt(consumables.size());
-        return consumables.get(index);
+    public Loot getRandomLoot() {
+        int index = random.nextInt(loot.size());
+        return loot.get(index);
     }
 
     /**
@@ -52,9 +49,10 @@ public class LootFactory {
         };
     }
 
-    private void initConsumables() {
-        consumables.add(new HealthPotion(HealthPotion.PotionStrength.PUNY));
-        consumables.add(new HealthPotion(HealthPotion.PotionStrength.MINOR));
-        consumables.add(new HealthPotion(HealthPotion.PotionStrength.MAJOR));
+    private List<Loot> initLootTable() {
+        return List.of(new HealthPotion(HealthPotion.PotionStrength.PUNY),
+                new HealthPotion(HealthPotion.PotionStrength.MINOR),
+                new HealthPotion(HealthPotion.PotionStrength.MAJOR)
+        );
     }
 }
