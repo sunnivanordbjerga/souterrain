@@ -17,7 +17,7 @@ class PlayerTest {
 
     @BeforeEach
     void setup() {
-        this.player = new Player();
+        this.player = new Player(new Random(1));
     }
 
     @Test
@@ -44,22 +44,20 @@ class PlayerTest {
 
     @Test
     void attack_reducesTargetHp() {
-        Random random = new Random(1);
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5);
+        Enemy grunt = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
         int before = grunt.getHp();
 
-        int result = player.attack(grunt, random);
+        int result = player.attack(grunt);
 
         assertEquals(before - result, grunt.getHp());
     }
 
     @Test
     void attack_returnsDamageWithinAttackRange() {
-        Random random = new Random(1);
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5);
+        Enemy grunt = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
-        int result = player.attack(grunt, random);
+        int result = player.attack(grunt);
         assertTrue(result >= 4 && result <= 7);
     }
 
@@ -89,44 +87,40 @@ class PlayerTest {
 
     @Test
     void modifyAttackRange_increasesDamage() {
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5);
+        Player player2 = new Player(new Random(1));
+        Enemy grunt1 = new Enemy("Grunt", 10, 2, 5, new Random(2));
+        Enemy grunt2 = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
-        Random random = new Random(1);
-        int before = player.attack(grunt, random);
+        int before = player.attack(grunt1);
 
-        player.modifyAttackRange(2);
+        player2.modifyAttackRange(2);
 
-        random = new Random(1);
-        int after = player.attack(grunt, random);
+        int after = player2.attack(grunt2);
         assertEquals(before + 2, after);
     }
 
     @Test
     void modifyAttackRange_decreasesDamage() {
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5);
+        Enemy grunt = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
-        Random random = new Random(1);
-        int before = player.attack(grunt, random);
+        int before = player.attack(grunt);
 
         player.modifyAttackRange(5);
         player.modifyAttackRange(-2);
 
-        random = new Random(1);
-        int after = player.attack(grunt, random);
+        int after = player.attack(grunt);
         assertEquals(before + 5 - 2, after);
     }
 
     @Test
     void modifyAttackRange_capsAtZero() {
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5);
+        Enemy grunt = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
-        Random random = new Random(1);
-        int before = player.attack(grunt, random);
+        int before = player.attack(grunt);
 
         player.modifyAttackRange(-2);
 
-        random = new Random(1);
-        int after = player.attack(grunt, random);
+        int after = player.attack(grunt);
 
         assertEquals(before, after);
     }
