@@ -3,11 +3,18 @@ package no.uib.inf101.model.game.narration;
 import no.uib.inf101.model.entity.enemy.Enemy;
 import no.uib.inf101.model.game.narration.node.*;
 
+import java.util.Random;
+
 /**
  * Responsible for initializing and connecting all {@link Node}s and {@link Choice}s
  */
 public class StoryBuilder {
+    private final Random random;
     private Node gameOver;
+
+    public StoryBuilder(Random random){
+        this.random = random;
+    }
 
     /**
      * Builds and connects all {@link Node}s and {@link Choice}s in the story graph.
@@ -53,7 +60,7 @@ public class StoryBuilder {
                 the armour once protected.
                 """);
 
-        Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10);
+        Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10, random);
         Node afterCombat = new StoryNode("The knight crumples to the ground. The armor is hollow.");
         Node guardianCombat = new CombatNode(
                 "The armour stirs", undeadGuardian, afterCombat, gameOver
