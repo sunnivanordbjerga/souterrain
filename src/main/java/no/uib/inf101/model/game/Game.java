@@ -20,7 +20,6 @@ import java.util.Random;
 public class Game implements ControllableGame, ViewableGame {
     private final Random random;
     private final Player player;
-    private static final StoryBuilder STORYBUILDER = new StoryBuilder();
     private Node currentNode;
     private final List<String> log;
     private boolean gameOver;
@@ -29,10 +28,11 @@ public class Game implements ControllableGame, ViewableGame {
      * Creates a {@link Game}.
      */
     public Game() {
-        this.log = new ArrayList<>();
-        this.player = new Player();
-        setCurrentNode(STORYBUILDER.buildStory());
         this.random = new Random();
+        this.log = new ArrayList<>();
+        StoryBuilder storyBuilder = new StoryBuilder(random);
+        this.player = new Player(random);
+        setCurrentNode(storyBuilder.buildStory());
     }
 
     @Override
@@ -108,14 +108,14 @@ public class Game implements ControllableGame, ViewableGame {
     public boolean resolveCombat(Enemy enemy) {
         while (player.isAlive() && enemy.isAlive()) {
 
-            int playerDamage = player.attack(enemy, random);
+            int playerDamage = player.attack(enemy);
             log(randomPlayerAttackText(enemy, playerDamage));
 
             if (!enemy.isAlive()) {
                 return true;
             }
 
-            int enemyDamage = enemy.attack(player, random);
+            int enemyDamage = enemy.attack(player);
             log(randomEnemyAttackText(enemy, enemyDamage));
 
             if (!player.isAlive()) {
