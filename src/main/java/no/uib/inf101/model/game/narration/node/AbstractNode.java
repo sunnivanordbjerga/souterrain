@@ -25,11 +25,11 @@ public abstract class AbstractNode implements Node {
      */
     public AbstractNode(String text) {
         this.text = Objects.requireNonNull(text, "Text cannot be null");
-        this.choices = new ArrayList<>();
-
         if(text.isBlank()){
             throw new IllegalArgumentException("Text cannot be blank");
         }
+
+        this.choices = new ArrayList<>();
     }
 
     @Override
