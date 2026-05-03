@@ -13,11 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class EnemyTest {
     private Enemy enemy;
-    private Random random;
 
     @BeforeEach
     void setup() {
-        this.random = new Random(1);
+        Random random = new Random(1);
         this.enemy = new Enemy("Enemy", 10, 2, 8, random);
     }
 
@@ -44,8 +43,7 @@ class EnemyTest {
 
     @Test
     void attack_returnsDamageWithinAttackRange() {
-        Random random = new Random(1);
-        Player hero = new Player(random);
+        Player hero = new Player(new Random(2));
 
         int result = enemy.attack(hero);
 
