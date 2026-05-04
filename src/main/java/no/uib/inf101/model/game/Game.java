@@ -104,6 +104,19 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     /**
+     * Simulates a probability roll, returning whether it succeeded based on a given successChance.
+     *
+     * @param successChance a number between 0 (guaranteed failure) and 1 (guaranteed success)
+     * @return true if the roll is successful
+     */
+    public boolean roll(double successChance) {
+        if (successChance < 0 || successChance > 1) {
+            throw new IllegalArgumentException("SuccessChance must be between 0 and 1");
+        }
+        return random.nextDouble() < successChance;
+    }
+
+    /**
      * Auto-resolves a combat between the {@link Player} and the given {@link Enemy},
      * returning whether the player survives or dies to the relevant {@link CombatNode}.
      *
