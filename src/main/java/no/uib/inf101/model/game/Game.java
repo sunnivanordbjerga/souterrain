@@ -179,8 +179,8 @@ public class Game implements ControllableGame, ViewableGame {
         } else if (playerHpRatio <= 0.5) {
             variants = List.of(
                     "You barely manage to maintain your stance as the " + enemyName + " hits you for " + damage + ".",
-                    "You barely evade a fatal blow, redirecting the " + enemyName + "'s attack to a less critical point for " + damage + ".",
-                    "Your weapon lands a solid hit on the " + enemyName + " for " + damage + "."
+                    "You narrowly evade a fatal blow, redirecting the " + enemyName + "'s attack to a less critical point for " + damage + ".",
+                    "The " + enemyName + " lands a solid hit on you for " + damage + "."
             );
         } else {
             variants = List.of(
