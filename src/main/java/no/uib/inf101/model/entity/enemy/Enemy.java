@@ -3,18 +3,24 @@ package no.uib.inf101.model.entity.enemy;
 import no.uib.inf101.model.entity.AbstractEntity;
 import no.uib.inf101.model.entity.Attacker;
 import no.uib.inf101.model.entity.Entity;
+import no.uib.inf101.model.loot.Loot;
+import no.uib.inf101.model.loot.LootFactory;
 import no.uib.inf101.model.loot.equipable.EquipmentType;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
  * Represents a basic enemy, with no additional abilities.
  */
 public class Enemy extends AbstractEntity implements Attacker {
+    private final Random random;
     private final int minDamage;
     private final int maxDamage;
     private final EquipmentType guaranteedDrop;
-    private final Random random;
+    private static final double RANDOM_DROP_CHANCE = 0.5;
 
     /**
      * Creates a new {@link Enemy} with the given max HP and damage range.
@@ -50,5 +56,26 @@ public class Enemy extends AbstractEntity implements Attacker {
         target.takeDamage(damage);
 
         return damage;
+    }
+
+    /**
+     * Returns this {@link Enemy}'s guaranteed drop, if any,
+     * and optionally, a random {@link Loot} item based on a fixed drop chance.
+     *
+     * @param factory the {@link LootFactory} used to generate this enemy's drops
+     * @return the list of dropped loot
+     */
+    public List<Loot> dropLoot(LootFactory factory) {
+        Objects.requireNonNull(factory, "LootFactory cannot be null.");
+
+        List<Loot> drops = new ArrayList<>();
+
+        if (guaranteedDrop != null) {
+            drops.add(factory.getSpecificEquipable(guaranteedDrop));
+        }
+        if (random.nextDouble() < RANDOM_DROP_CHANCE) {
+            drops.add(factory.getRandomLoot());
+        }
+        return drops;
     }
 }
