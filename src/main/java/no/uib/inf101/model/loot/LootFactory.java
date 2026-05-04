@@ -11,16 +11,16 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Generates {@link Consumable}s and {@link Equipable}s.
+ * Generates {@link Loot}
  */
 public class LootFactory {
     private final Random random;
     private final List<Loot> loot;
 
     /**
-     * Creates an {@link LootFactory}, holding a list of items for random selection.
+     * Creates a {@link LootFactory}.
      *
-     * @param random the shared random instance
+     * @param random the shared random instance, used for random drops
      */
     public LootFactory(Random random) {
         this.random = random;
@@ -28,9 +28,9 @@ public class LootFactory {
     }
 
     /**
-     * Returns a random {@link Consumable}
+     * Returns a random {@link Loot}
      *
-     * @return a random consumable
+     * @return a random loot item
      */
     public Loot getRandomLoot() {
         int index = random.nextInt(loot.size());
@@ -50,7 +50,8 @@ public class LootFactory {
     }
 
     private List<Loot> initLootTable() {
-        return List.of(new HealthPotion(HealthPotion.PotionStrength.PUNY),
+        return List.of(
+                new HealthPotion(HealthPotion.PotionStrength.PUNY),
                 new HealthPotion(HealthPotion.PotionStrength.MINOR),
                 new HealthPotion(HealthPotion.PotionStrength.MAJOR)
         );
