@@ -2,6 +2,7 @@ package no.uib.inf101.model.game.narration;
 
 import no.uib.inf101.model.entity.enemy.Enemy;
 import no.uib.inf101.model.game.narration.node.*;
+import no.uib.inf101.model.loot.equipable.EquipmentType;
 
 import java.util.Random;
 
@@ -60,7 +61,7 @@ public class StoryBuilder {
                 the armour once protected.
                 """);
 
-        Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10, random);
+        Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10, EquipmentType.HOLLOW_HELM, random);
         Node afterCombat = new StoryNode("The knight crumples to the ground. The armor is hollow.");
         Node guardianCombat = new CombatNode(
                 "The armour stirs", undeadGuardian, afterCombat, gameOver
