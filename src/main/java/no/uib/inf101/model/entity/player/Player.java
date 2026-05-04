@@ -3,6 +3,7 @@ package no.uib.inf101.model.entity.player;
 import no.uib.inf101.model.entity.AbstractEntity;
 import no.uib.inf101.model.entity.Attacker;
 import no.uib.inf101.model.entity.Entity;
+import no.uib.inf101.model.loot.Loot;
 
 import java.util.Random;
 
@@ -81,5 +82,14 @@ public class Player extends AbstractEntity implements Attacker {
      */
     public void modifyAttackRange(int changeAmount) {
         damageBonus = Math.max(0, damageBonus + changeAmount);
+    }
+
+    /**
+     * Adds the given {@link Loot} item to the {@link Player}'s inventory.
+     *
+     * @param item the loot item to add
+     */
+    public void addItem(Loot item){
+        // TODO
     }
 }
