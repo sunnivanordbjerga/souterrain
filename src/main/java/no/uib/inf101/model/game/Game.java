@@ -108,6 +108,7 @@ public class Game implements ControllableGame, ViewableGame {
      *
      * @param successChance a number between 0 (guaranteed failure) and 1 (guaranteed success)
      * @return true if the roll is successful
+     * @throws IllegalArgumentException if successChance is not between 0-1
      */
     public boolean roll(double successChance) {
         if (successChance < 0 || successChance > 1) {
@@ -205,7 +206,7 @@ public class Game implements ControllableGame, ViewableGame {
         return variants.get(random.nextInt(variants.size()));
     }
 
-    private void handleLoot(Enemy enemy){
+    private void handleLoot(Enemy enemy) {
         List<Loot> drops = enemy.dropLoot(lootFactory);
         for (Loot loot : drops) {
             player.addItem(loot);
