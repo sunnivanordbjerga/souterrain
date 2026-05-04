@@ -22,7 +22,7 @@ public class SkillCheckNode extends AbstractNode {
      * @param baseText      the text to show before both outcomes
      * @param successNode   the {@link Node} to proceed to on success
      * @param failureNode   the {@link Node} to proceed to on failure
-     * @param successChance the chance of success (0-100)
+     * @param successChance the chance of success (0-1)
      * @throws NullPointerException     if text or nodes are null
      * @throws IllegalArgumentException if successChance is not between 0-100
      * @throws IllegalArgumentException if baseText is blank
@@ -47,7 +47,7 @@ public class SkillCheckNode extends AbstractNode {
     public void onEnter(Game game) {
         super.onEnter(game);
 
-        boolean success = game.getRandom().nextInt(MAX_SUCCESS_RESULT) < successChance;
+        boolean success = game.roll(successChance);
 
         game.setCurrentNode(success ? successNode : failureNode);
     }
