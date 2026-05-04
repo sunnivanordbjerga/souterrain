@@ -1,6 +1,5 @@
 package no.uib.inf101.model.loot;
 
-import no.uib.inf101.model.loot.consumable.Consumable;
 import no.uib.inf101.model.loot.consumable.HealthPotion;
 import no.uib.inf101.model.loot.equipable.Equipable;
 import no.uib.inf101.model.loot.equipable.EquipmentType;
