@@ -7,6 +7,8 @@ import no.uib.inf101.model.game.narration.Choice;
 import no.uib.inf101.model.game.narration.StoryBuilder;
 import no.uib.inf101.model.game.narration.node.CombatNode;
 import no.uib.inf101.model.game.narration.node.Node;
+import no.uib.inf101.model.loot.Loot;
+import no.uib.inf101.model.loot.LootFactory;
 import no.uib.inf101.view.ViewableGame;
 
 import java.util.ArrayList;
@@ -15,13 +17,14 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * Manages and directs the main game logic.
+ * Responsible for the main game logic and holding the game state.
  */
 public class Game implements ControllableGame, ViewableGame {
     private final Random random;
     private final Player player;
-    private Node currentNode;
     private final List<String> log;
+    private final LootFactory lootFactory;
+    private Node currentNode;
     private boolean gameOver;
 
     /**
@@ -30,8 +33,10 @@ public class Game implements ControllableGame, ViewableGame {
     public Game() {
         this.random = new Random();
         this.log = new ArrayList<>();
-        StoryBuilder storyBuilder = new StoryBuilder(random);
+        this.lootFactory = new LootFactory(random);
         this.player = new Player(random);
+        StoryBuilder storyBuilder = new StoryBuilder(random);
+
         setCurrentNode(storyBuilder.buildStory());
     }
 
@@ -112,6 +117,7 @@ public class Game implements ControllableGame, ViewableGame {
             log(randomPlayerAttackText(enemy, playerDamage));
 
             if (!enemy.isAlive()) {
+                handleLoot(enemy);
                 return true;
             }
 
@@ -125,23 +131,13 @@ public class Game implements ControllableGame, ViewableGame {
         return player.isAlive();
     }
 
-    /**
-     * Returns a shared {@link Random} instance for this {@link Game}.
-     * Used for randomized outcomes.
-     *
-     * @return the Random instance
-     */
-    public Random getRandom() {
-        return random;
-    }
-
     private String randomPlayerAttackText(Enemy enemy, int damage) {
         String enemyName = enemy.getDisplayName();
-        float enemyHpRatio = (float) enemy.getHp() / enemy.getMaxHp();
+        double enemyHpRatio = (double) enemy.getHp() / enemy.getMaxHp();
 
         List<String> variants;
 
-        if (enemyHpRatio <= 0.2f) {
+        if (enemyHpRatio <= 0.2) {
             variants = List.of(
                     "The " + enemyName + " is at the brink of collapse as you hit it for " + damage + ".",
                     "You land a devastating blow on the " + enemyName +
@@ -150,7 +146,7 @@ public class Game implements ControllableGame, ViewableGame {
                     "The " + enemyName + " reels as you land a devastating blow for " + damage + "."
 
             );
-        } else if (enemyHpRatio <= 0.5f) {
+        } else if (enemyHpRatio <= 0.5) {
             variants = List.of(
                     "You hit the " + enemyName + " for " + damage + ". It staggers for a moment.",
                     "You find an opening in the " + enemyName + "'s defenses, hitting it for " + damage + ".",
@@ -169,7 +165,7 @@ public class Game implements ControllableGame, ViewableGame {
 
     private String randomEnemyAttackText(Enemy enemy, int damage) {
         String enemyName = enemy.getDisplayName();
-        float playerHpRatio = (float) player.getHp() / player.getMaxHp();
+        double playerHpRatio = (double) player.getHp() / player.getMaxHp();
 
         List<String> variants;
 
@@ -194,5 +190,13 @@ public class Game implements ControllableGame, ViewableGame {
             );
         }
         return variants.get(random.nextInt(variants.size()));
+    }
+
+    private void handleLoot(Enemy enemy){
+        List<Loot> drops = enemy.dropLoot(lootFactory);
+        for (Loot loot : drops) {
+            player.addItem(loot);
+            log("You find: " + loot.getDisplayName());
+        }
     }
 }
