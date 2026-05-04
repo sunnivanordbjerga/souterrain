@@ -173,14 +173,14 @@ public class Game implements ControllableGame, ViewableGame {
 
         List<String> variants;
 
-        if (playerHpRatio <= 0.2f) {
+        if (playerHpRatio <= 0.2) {
             variants = List.of(
                     "The " + enemyName + " lunges at you, dealing " + damage + " damage. Your vision falters for a brief moment.",
                     "You barely hold onto consciousness as the " + enemyName + " strikes you for " + damage + ".",
                     "Panic sets in as the " + enemyName + " hits you for " + damage + ". You are barely standing.",
                     "Searing pain spreads through your body as you take " + damage + " damage."
             );
-        } else if (playerHpRatio <= 0.5f) {
+        } else if (playerHpRatio <= 0.5) {
             variants = List.of(
                     "You barely manage to maintain your stance as the " + enemyName + " hits you for " + damage + ".",
                     "You barely evade a fatal blow, redirecting the " + enemyName + "'s attack to a less critical point for " + damage + ".",

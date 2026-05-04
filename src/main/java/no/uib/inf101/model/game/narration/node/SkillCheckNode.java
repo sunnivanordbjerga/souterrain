@@ -12,9 +12,7 @@ import java.util.Objects;
  * and 100 (guaranteed success).
  */
 public class SkillCheckNode extends AbstractNode {
-    private static final int MAX_SUCCESS_RESULT = 100;
-
-    private final int successChance;
+    private final double successChance;
     private final Node successNode;
     private final Node failureNode;
 
@@ -33,14 +31,14 @@ public class SkillCheckNode extends AbstractNode {
             String baseText,
             Node successNode,
             Node failureNode,
-            int successChance) {
+            double successChance) {
 
         super(baseText);
         this.successNode = Objects.requireNonNull(successNode, "SuccessNode cannot be null");
         this.failureNode = Objects.requireNonNull(failureNode, "FailureNode cannot be null");
         this.successChance = successChance;
 
-        if (successChance < 0 || successChance > 100) {
+        if (successChance < 0 || successChance > 1) {
             throw new IllegalArgumentException("SuccessChance must be between 0 and 100");
         }
     }
