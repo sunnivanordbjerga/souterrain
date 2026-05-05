@@ -47,7 +47,7 @@ public class GameView extends JPanel {
     public void render() {
         storyPanel.update(game.getLog());
         choicePanel.update(game.getCurrentNode().getChoices());
-        statPanel.update(game.getPlayerHp());
+        statPanel.update(game.getPlayerHp(), game.getPlayerMaxHp());
 
         revalidate();
         repaint();
