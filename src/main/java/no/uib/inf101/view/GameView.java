@@ -10,7 +10,7 @@ import java.awt.*;
 public class GameView extends JPanel {
     private final ViewableGame game;
     private final UITheme theme;
-    private final StatPanel statPanel;
+    private final HUDPanel statPanel;
     private final ChoicePanel choicePanel;
     private final StoryPanel storyPanel;
 
@@ -23,7 +23,7 @@ public class GameView extends JPanel {
     public GameView(ViewableGame game) {
         this.game = game;
         this.theme = UITheme.defaultTheme();
-        this.statPanel = new StatPanel(theme);
+        this.statPanel = new HUDPanel(theme);
         this.choicePanel = new ChoicePanel(theme);
         this.storyPanel = new StoryPanel(theme);
 
