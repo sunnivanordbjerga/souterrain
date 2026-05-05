@@ -34,8 +34,7 @@ public class GameController {
         Choice choice = game.getCurrentNode().getChoices().get(index);
 
         switch (choice.type()) {
-            case PROGRESS_STORY -> game.choose(index);
-            case RESTART -> newGame();
+            case NORMAL -> game.choose(index);
             case RESTART -> startNewGame();
             case QUIT -> {
                 quitGame();
