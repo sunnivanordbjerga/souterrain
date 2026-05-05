@@ -33,7 +33,7 @@ public class GameController {
     public void handleChoice(Choice choice) {
         switch (choice.type()) {
             case NORMAL -> game.choose(choice);
-            case RESTART -> startNewGame();
+            case RESTART -> game.reset();
             case QUIT -> {
                 quitGame();
                 return;
@@ -47,13 +47,6 @@ public class GameController {
      */
     private void refreshUI(){
         view.render();
-    }
-
-    /**
-     * Resets the game.
-     */
-    private void startNewGame() {
-        this.game = new Game();
     }
 
     /**

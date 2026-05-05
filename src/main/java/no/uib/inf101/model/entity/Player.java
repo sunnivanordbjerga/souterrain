@@ -89,4 +89,14 @@ public class Player extends AbstractEntity implements Attacker {
     public void addItem(Loot item){
         // TODO addItem method
     }
+
+    /**
+     * Resets the {@link Player} to it's initial state.
+     */
+    public void reset(){
+        this.maxHp = 50;
+        this.hp = maxHp;
+        this.defenseBonus = 0;
+        this.damageBonus = 0;
+    }
 }

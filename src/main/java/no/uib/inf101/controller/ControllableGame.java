@@ -17,4 +17,9 @@ public interface ControllableGame {
      *                                  or if the {@link Choice} type is not NORMAL
      */
     void choose(Choice choice);
+
+    /**
+     * Resets the {@link Game} to it's initial state.
+     */
+    void reset();
 }
