@@ -1,19 +1,21 @@
 package no.uib.inf101.view;
 
-import no.uib.inf101.model.game.Choice;
-import no.uib.inf101.model.game.node.Node;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 
 /**
- * Displays the {@link Node} text, {@link Choice}s and health points.
+ * Displays the game log.
  */
 public class StoryPanel extends JPanel {
     private final JTextArea textArea;
 
+    /**
+     * Creates a {@link StoryPanel} holding a scrollable text area.
+     *
+     * @param theme the {@link UITheme} used to set colors and fonts
+     */
     public StoryPanel(UITheme theme) {
         this.textArea = new JTextArea();
         this.setBackground(theme.background());
@@ -24,13 +26,18 @@ public class StoryPanel extends JPanel {
         add(new JScrollPane(textArea), BorderLayout.CENTER);
     }
 
+    /**
+     * Updates the log text.
+     *
+     * @param log the game log
+     */
     public void update(List<String> log){
         textArea.setText(String.join("\n", log));
         textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
     private void configureTextArea(UITheme theme) {
-        textArea.setEditable(false);
+        textArea.setEnabled(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setRows(40);
@@ -40,6 +47,5 @@ public class StoryPanel extends JPanel {
         textArea.setBackground(theme.background());
         textArea.setForeground(theme.textColor());
         textArea.setFont(theme.text());
-        textArea.setFocusable(false);
     }
 }
