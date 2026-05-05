@@ -1,8 +1,5 @@
-package no.uib.inf101.model.entity.enemy;
+package no.uib.inf101.model.entity;
 
-import no.uib.inf101.model.entity.AbstractEntity;
-import no.uib.inf101.model.entity.Attacker;
-import no.uib.inf101.model.entity.Entity;
 import no.uib.inf101.model.loot.Loot;
 import no.uib.inf101.model.loot.LootFactory;
 import no.uib.inf101.model.loot.equipable.EquipmentType;

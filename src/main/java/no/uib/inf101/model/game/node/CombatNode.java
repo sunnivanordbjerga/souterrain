@@ -1,7 +1,7 @@
-package no.uib.inf101.model.game.narration.node;
+package no.uib.inf101.model.game.node;
 
-import no.uib.inf101.model.entity.enemy.Enemy;
-import no.uib.inf101.model.entity.player.Player;
+import no.uib.inf101.model.entity.Enemy;
+import no.uib.inf101.model.entity.Player;
 import no.uib.inf101.model.game.Game;
 
 import java.util.Objects;

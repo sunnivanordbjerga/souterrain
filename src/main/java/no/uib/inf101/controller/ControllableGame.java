@@ -1,8 +1,8 @@
 package no.uib.inf101.controller;
 
 import no.uib.inf101.model.game.Game;
-import no.uib.inf101.model.game.narration.Choice;
-import no.uib.inf101.model.game.narration.node.Node;
+import no.uib.inf101.model.game.Choice;
+import no.uib.inf101.model.game.node.Node;
 
 /**
  * Defines {@link Game} methods usable by the {@link GameController}

@@ -1,4 +1,4 @@
-package no.uib.inf101.model.game.narration.node;
+package no.uib.inf101.model.game.node;
 
 import no.uib.inf101.model.game.Game;
 

@@ -1,12 +1,9 @@
 package no.uib.inf101.model.game;
 
 import no.uib.inf101.controller.ControllableGame;
-import no.uib.inf101.model.entity.enemy.Enemy;
-import no.uib.inf101.model.entity.player.Player;
-import no.uib.inf101.model.game.narration.Choice;
-import no.uib.inf101.model.game.narration.StoryBuilder;
-import no.uib.inf101.model.game.narration.node.CombatNode;
-import no.uib.inf101.model.game.narration.node.Node;
+import no.uib.inf101.model.entity.Enemy;
+import no.uib.inf101.model.entity.Player;
+import no.uib.inf101.model.game.node.Node;
 import no.uib.inf101.model.loot.Loot;
 import no.uib.inf101.model.loot.LootFactory;
 import no.uib.inf101.view.ViewableGame;

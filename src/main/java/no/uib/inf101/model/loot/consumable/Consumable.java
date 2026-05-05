@@ -1,6 +1,6 @@
 package no.uib.inf101.model.loot.consumable;
 
-import no.uib.inf101.model.entity.player.Player;
+import no.uib.inf101.model.entity.Player;
 import no.uib.inf101.model.loot.Loot;
 
 /**

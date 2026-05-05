@@ -1,6 +1,6 @@
-package no.uib.inf101.model.game.narration;
+package no.uib.inf101.model.game;
 
-import no.uib.inf101.model.game.narration.node.Node;
+import no.uib.inf101.model.game.node.Node;
 
 import java.util.Objects;
 

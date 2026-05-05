@@ -1,8 +1,5 @@
-package no.uib.inf101.model.entity.player;
+package no.uib.inf101.model.entity;
 
-import no.uib.inf101.model.entity.AbstractEntity;
-import no.uib.inf101.model.entity.Attacker;
-import no.uib.inf101.model.entity.Entity;
 import no.uib.inf101.model.loot.Loot;
 
 import java.util.Random;
@@ -90,6 +87,6 @@ public class Player extends AbstractEntity implements Attacker {
      * @param item the loot item to add
      */
     public void addItem(Loot item){
-        // TODO
+        // TODO addItem method
     }
 }

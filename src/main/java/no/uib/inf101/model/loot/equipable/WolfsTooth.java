@@ -1,6 +1,6 @@
 package no.uib.inf101.model.loot.equipable;
 
-import no.uib.inf101.model.entity.player.Player;
+import no.uib.inf101.model.entity.Player;
 
 /**
  * Represents the sword dropped by the dire-wolf, providing a
