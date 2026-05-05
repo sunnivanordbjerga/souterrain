@@ -26,6 +26,7 @@ public class StoryPanel extends JPanel {
 
     public void update(List<String> log){
         textArea.setText(String.join("\n", log));
+        textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
     private void configureTextArea(UITheme theme) {
@@ -34,7 +35,7 @@ public class StoryPanel extends JPanel {
         textArea.setWrapStyleWord(true);
         textArea.setRows(40);
         textArea.setColumns(20);
-        textArea.setCaretPosition(textArea.getDocument().getLength());
+        textArea.setMargin(new Insets(20, 20, 20, 20));
 
         textArea.setBackground(theme.background());
         textArea.setForeground(theme.textColor());
