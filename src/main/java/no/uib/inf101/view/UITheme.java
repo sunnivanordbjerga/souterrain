@@ -34,7 +34,7 @@ public record UITheme(Color background,
                 Color.WHITE,
                 new Font("Serif", Font.BOLD, 26),
                 new Font("Serif", Font.PLAIN, 18),
-                new Font("Serif", Font.PLAIN, 12)
+                new Font("Serif", Font.PLAIN, 14)
         );
     }
 }
