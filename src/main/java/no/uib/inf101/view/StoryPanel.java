@@ -46,6 +46,6 @@ public class StoryPanel extends JPanel {
 
         textArea.setBackground(theme.background());
         textArea.setForeground(theme.textColor());
-        textArea.setFont(theme.text());
+        textArea.setFont(theme.regular());
     }
 }

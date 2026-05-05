@@ -9,10 +9,17 @@ import java.awt.*;
  * @param button     the button color
  * @param frame      the frame color
  * @param textColor  the text color
- * @param title      the title font and size
- * @param text       the text font and size
+ * @param title      the title font
+ * @param regular    the regular font
+ * @param small      the small font
  */
-public record UITheme(Color background, Color button, Color frame, Color textColor, Font title, Font text) {
+public record UITheme(Color background,
+                      Color button,
+                      Color frame,
+                      Color textColor,
+                      Font title,
+                      Font regular,
+                      Font small) {
 
     /**
      * Returns the default {@link UITheme}.
@@ -26,7 +33,8 @@ public record UITheme(Color background, Color button, Color frame, Color textCol
                 Color.LIGHT_GRAY,
                 Color.WHITE,
                 new Font("Serif", Font.BOLD, 26),
-                new Font("Serif", Font.PLAIN, 18)
+                new Font("Serif", Font.PLAIN, 18),
+                new Font("Serif", Font.PLAIN, 12)
         );
     }
 }
