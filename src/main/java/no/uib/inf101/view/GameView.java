@@ -13,7 +13,6 @@ import java.util.function.Consumer;
  */
 public class GameView extends JPanel {
     private final ViewableGame game;
-    private final UITheme theme;
     private final HUDPanel statPanel;
     private final ChoicePanel choicePanel;
     private final StoryPanel storyPanel;
@@ -26,7 +25,7 @@ public class GameView extends JPanel {
      */
     public GameView(ViewableGame game) {
         this.game = game;
-        this.theme = UITheme.defaultTheme();
+        UITheme theme = UITheme.defaultTheme();
         this.statPanel = new HUDPanel(theme);
         this.choicePanel = new ChoicePanel(theme);
         this.storyPanel = new StoryPanel(theme);
