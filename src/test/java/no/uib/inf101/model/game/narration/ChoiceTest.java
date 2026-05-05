@@ -1,7 +1,8 @@
 package no.uib.inf101.model.game.narration;
 
-import no.uib.inf101.model.game.narration.node.Node;
-import no.uib.inf101.model.game.narration.node.StoryNode;
+import no.uib.inf101.model.game.Choice;
+import no.uib.inf101.model.game.node.Node;
+import no.uib.inf101.model.game.node.StoryNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,7 @@ class ChoiceTest {
     }
 
     @Test
-    void choiceThrowsOnNullNode() {
-        assertThrows(NullPointerException.class, () -> new Choice("Test", null));
+    void choiceThrowsOnNullNodeWhenNormalType() {
+        assertThrows(IllegalArgumentException.class, () -> new Choice("Test", null));
     }
 }
