@@ -10,20 +10,21 @@ import java.util.Objects;
  * @param text     the text describing this choice; cannot be blank
  * @param nextNode the resulting node from choosing this choice
  * @param type     the {@link ChoiceType}, representing system behavior;
- *                 default {@code PROGRESS_STORY}
+ *                 default {@code NORMAL}
  */
 public record Choice(String text, Node nextNode, ChoiceType type) {
 
     /**
-     * Creates a {@link Choice} with {@link ChoiceType} {@code PROGRESS_STORY}.
+     * Creates a {@link Choice} with {@link ChoiceType} {@code NORMAL}.
      *
      * @param text     the text describing this choice; cannot be blank
      * @param nextNode the resulting node from choosing this choice
-     * @throws NullPointerException     if text or nextNode is null
+     * @throws NullPointerException     if text is null
      * @throws IllegalArgumentException if text is blank
+     *                                  or if type is NORMAL and nextNode is null
      */
     public Choice(String text, Node nextNode) {
-        this(text, nextNode, ChoiceType.PROGRESS_STORY);
+        this(text, nextNode, ChoiceType.NORMAL);
     }
 
     /**
@@ -32,15 +33,18 @@ public record Choice(String text, Node nextNode, ChoiceType type) {
      * @param text     the text describing this choice; cannot be blank
      * @param nextNode the resulting node from choosing this choice
      * @param type     the {@link ChoiceType}, defining its system behavior
-     * @throws NullPointerException     if text, nextNode or type is null
+     * @throws NullPointerException     if text or type is null
      * @throws IllegalArgumentException if text is blank
+     *                                  or if type is NORMAL and nextNode is null
      */
     public Choice {
         Objects.requireNonNull(text, "Text cannot be null");
-        Objects.requireNonNull(nextNode, "NextNode cannot be null");
         Objects.requireNonNull(type, "ChoiceType cannot be null");
         if (text.isBlank()) {
             throw new IllegalArgumentException("Text cannot be blank");
+        }
+        if (type == ChoiceType.NORMAL && nextNode == null) {
+            throw new IllegalArgumentException("NORMAL choices must have a nextNode");
         }
     }
 }
