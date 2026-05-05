@@ -29,4 +29,11 @@ public interface ViewableGame {
      * @return the player's current hp
      */
     int getPlayerHp();
+
+    /**
+     * Returns the player's max health points.
+     *
+     * @return the player's max hp
+     */
+    int getPlayerMaxHp();
 }

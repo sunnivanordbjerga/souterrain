@@ -67,6 +67,11 @@ public class Game implements ControllableGame, ViewableGame {
         return player.getHp();
     }
 
+    @Override
+    public int getPlayerMaxHp(){
+        return player.getMaxHp();
+    }
+
     /**
      * Sets the current {@link Node} to the one provided.
      *
