@@ -6,6 +6,8 @@ import no.uib.inf101.model.loot.equipable.EquipmentType;
 
 import java.util.Random;
 
+import static no.uib.inf101.model.game.node.EndNode.EndType.GAME_OVER;
+
 /**
  * Responsible for initializing and connecting all {@link Node}s and {@link Choice}s
  */
@@ -23,9 +25,9 @@ public class StoryBuilder {
      * @return the first {@link Node}
      */
     public Node buildStory() {
+        this.gameOver = new EndNode("The light leaves your eyes", GAME_OVER);
         Node start = new StoryNode("The air is stale and uninviting");
         Node lookAroundStartRoom = createLookAroundStartRoom();
-        this.gameOver = new EndNode("The light leaves your eyes");
 
         start.addChoice(new Choice("Proceed through the door", proceedTo(gameOver)));//TODO: Set next room
         start.addChoice(new Choice("Look around", lookAroundStartRoom));
