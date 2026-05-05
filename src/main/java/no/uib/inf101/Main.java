@@ -30,5 +30,7 @@ public class Main {
         frame.setContentPane(view);
         frame.pack();
         frame.setVisible(true);
+
+        view.render();
     }
 }
