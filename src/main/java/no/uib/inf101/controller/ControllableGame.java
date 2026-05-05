@@ -10,6 +10,13 @@ import no.uib.inf101.model.game.narration.node.Node;
 public interface ControllableGame {
 
     /**
+     * Returns the currently active {@link Node}.
+     *
+     * @return the current node
+     */
+    Node getCurrentNode();
+
+    /**
      * Chooses one of the available {@link Choice}s from
      * the current {@link Node} based on the given index.
      *
