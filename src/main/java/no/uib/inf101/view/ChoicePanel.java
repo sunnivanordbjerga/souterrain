@@ -10,14 +10,16 @@ import java.util.function.Consumer;
  * Renders any available {@link Choice}s.
  */
 public class ChoicePanel extends JPanel {
-    private Consumer<Choice> choiceListener;
+    // Uses a callback pattern to decouple view and controller
+    // Approach learnt through external discussion
+    private Consumer<Choice> onSelect;
 
     public ChoicePanel(UITheme theme) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public void setChoiceListener(Consumer<Choice> choiceListener) {
-        this.choiceListener = choiceListener;
+    public void setOnSelect(Consumer<Choice> onSelect) {
+        this.onSelect = onSelect;
     }
 
     /**
@@ -36,10 +38,9 @@ public class ChoicePanel extends JPanel {
         for (Choice choice : choices) {
             JButton button = new JButton(choice.text());
             button.addActionListener(e -> {
-                if (choiceListener == null) {
-                    throw new IllegalStateException("No choicelistener registered.");
+                if (onSelect != null) {
+                    onSelect.accept(choice);
                 }
-                choiceListener.accept(choice);
             });
 
             this.add(button);

@@ -23,7 +23,7 @@ public class GameController {
         this.view = view;
         this.onClose = onClose;
 
-        this.view.setChoiceListener(this::handleChoice);
+        this.view.setOnSelect(this::handleChoice);
     }
 
     /**

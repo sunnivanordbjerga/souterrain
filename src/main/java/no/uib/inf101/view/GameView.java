@@ -63,7 +63,7 @@ public class GameView extends JPanel {
      * @param choiceListener the choice listener,
      *                       returning selected choices to the GameController
      */
-    public void setChoiceListener(Consumer<Choice> choiceListener) {
-        choicePanel.setChoiceListener(Objects.requireNonNull(choiceListener, "ChoiceListener cannot be null"));
+    public void setOnSelect(Consumer<Choice> choiceListener) {
+        choicePanel.setOnSelect(Objects.requireNonNull(choiceListener, "ChoiceListener cannot be null"));
     }
 }
