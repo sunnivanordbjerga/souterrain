@@ -32,7 +32,7 @@ public class StoryPanel extends JPanel {
      * @param log the game log
      */
     public void update(List<String> log){
-        textArea.setText(String.join("\n", log));
+        textArea.setText(String.join("\n\n", log));
         textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
@@ -40,7 +40,7 @@ public class StoryPanel extends JPanel {
         textArea.setEnabled(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setRows(40);
+        textArea.setRows(30);
         textArea.setColumns(20);
         textArea.setMargin(new Insets(20, 20, 20, 20));
 

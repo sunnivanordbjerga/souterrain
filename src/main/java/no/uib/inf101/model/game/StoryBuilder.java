@@ -56,12 +56,10 @@ public class StoryBuilder {
     private Node createArmourBranch(Node returnNode) {
         Node armorSuccess = new StoryNode("""
                 It is unmoving, but through the helmet slit,
-                you swear you see a flicker, as if you're being watched.
-                """);
+                you swear you see a flicker, as if you're being watched.""");
         Node armorFailure = new StoryNode("""
                 It is unmoving. Nothing but dust and bones remain of what
-                the armour once protected.
-                """);
+                the armour once protected.""");
 
         Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10, EquipmentType.HOLLOW_HELM, random);
         Node afterCombat = new StoryNode("The knight crumples to the ground. The armor is hollow.");
@@ -85,8 +83,7 @@ public class StoryBuilder {
         Node carvingsSuccess = new StoryNode("""
                 You recognise the letters as an ancient script. Though time has
                 eroded the full message, you can make out a phrase roughly translating to
-                ..."on his right-hand side".
-                """);
+                ..."on his right-hand side".""");
         Node carvingsFailure = new StoryNode("What little remains legible of the carving make no sense to you.");
 
         Choice stepBack = new Choice("Step back", returnNode);
