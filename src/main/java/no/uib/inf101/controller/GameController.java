@@ -11,6 +11,7 @@ import no.uib.inf101.view.GameView;
 public class GameController {
     private ControllableGame game;
     private final GameView view;
+    private final Runnable onClose;
 
     /**
      * Creates a {@link GameController}.
@@ -18,16 +19,10 @@ public class GameController {
      * @param game the {@link ControllableGame} to update
      * @param view the {@link GameView} to call on for rendering
      */
-    public GameController(ControllableGame game, GameView view) {
+    public GameController(ControllableGame game, GameView view, Runnable onClose) {
         this.game = game;
         this.view = view;
-    }
-
-    /**
-     * Starts the game by calling on the {@link GameView} to render.
-     */
-    public void start() {
-       refreshUI();
+        this.onClose = onClose;
     }
 
     /**
@@ -41,6 +36,7 @@ public class GameController {
         switch (choice.type()) {
             case PROGRESS_STORY -> game.choose(index);
             case RESTART -> newGame();
+            case RESTART -> startNewGame();
             case QUIT -> {
                 quitGame();
                 return;
@@ -59,7 +55,7 @@ public class GameController {
     /**
      * Resets the game.
      */
-    private void newGame() {
+    private void startNewGame() {
         this.game = new Game();
     }
 
@@ -67,6 +63,6 @@ public class GameController {
      * Closes the {@link GameView}, ending the application.
      */
     private void quitGame() {
-        view.close();
+       onClose.run();
     }
 }
