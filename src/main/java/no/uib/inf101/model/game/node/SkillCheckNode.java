@@ -39,7 +39,7 @@ public class SkillCheckNode extends AbstractNode {
         this.successChance = successChance;
 
         if (successChance < 0 || successChance > 1) {
-            throw new IllegalArgumentException("SuccessChance must be between 0 and 100");
+            throw new IllegalArgumentException("SuccessChance must be between 0 and 1");
         }
     }
 
