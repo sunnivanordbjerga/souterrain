@@ -1,6 +1,5 @@
 package no.uib.inf101.controller;
 
-import no.uib.inf101.model.game.Game;
 import no.uib.inf101.model.game.Choice;
 import no.uib.inf101.view.GameView;
 
@@ -9,7 +8,7 @@ import no.uib.inf101.view.GameView;
  * Translates user input to {@link ControllableGame} actions and calls on the view to render the current state.
  */
 public class GameController {
-    private ControllableGame game;
+    private final ControllableGame game;
     private final GameView view;
     private final Runnable onClose;
 
@@ -23,6 +22,8 @@ public class GameController {
         this.game = game;
         this.view = view;
         this.onClose = onClose;
+
+        this.view.setChoiceListener(this::handleChoice);
     }
 
     /**
@@ -45,7 +46,7 @@ public class GameController {
     /**
      * Updates the {@link GameView} based on the currently selected node.
      */
-    private void refreshUI(){
+    private void refreshUI() {
         view.render();
     }
 
@@ -53,6 +54,6 @@ public class GameController {
      * Closes the {@link GameView}, ending the application.
      */
     private void quitGame() {
-       onClose.run();
+        onClose.run();
     }
 }

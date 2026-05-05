@@ -1,7 +1,11 @@
 package no.uib.inf101.view;
 
+import no.uib.inf101.model.game.Choice;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * Renders the current game state by delegating to
@@ -37,7 +41,7 @@ public class GameView extends JPanel {
     @Override
     public void paintComponent(Graphics g) { //
         super.paintComponent(g);
-        Graphics2D g2 =(Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g;
         //TODO: draw background frame and title, else delete
     }
 
@@ -51,5 +55,15 @@ public class GameView extends JPanel {
 
         revalidate();
         repaint();
+    }
+
+    /**
+     * Sets the {@link ChoicePanel} choice listener.
+     *
+     * @param choiceListener the choice listener,
+     *                       returning selected choices to the GameController
+     */
+    public void setChoiceListener(Consumer<Choice> choiceListener) {
+        choicePanel.setChoiceListener(Objects.requireNonNull(choiceListener, "ChoiceListener cannot be null"));
     }
 }
