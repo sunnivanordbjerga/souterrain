@@ -78,7 +78,7 @@ public class StoryBuilder {
                 "You crouch down and look at the knight.",
                 armorSuccess,
                 armorFailure,
-                70);
+                0.7);
     }
 
     private Node createCarvingsBranch(Node returnNode) {
@@ -97,7 +97,7 @@ public class StoryBuilder {
                 "You look closer at the carved glyphs lining the entrance.",
                 carvingsSuccess,
                 carvingsFailure,
-                50
+                0.5
         );
     }
 
