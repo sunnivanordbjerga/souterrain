@@ -28,13 +28,11 @@ public class GameController {
     /**
      * Triggers game and system events based on the selected {@link Choice}'s type.
      *
-     * @param index the index of the selected choice
+     * @param choice the selected choice
      */
-    public void handleChoice(int index) {
-        Choice choice = game.getCurrentNode().getChoices().get(index);
-
+    public void handleChoice(Choice choice) {
         switch (choice.type()) {
-            case NORMAL -> game.choose(index);
+            case NORMAL -> game.choose(choice);
             case RESTART -> startNewGame();
             case QUIT -> {
                 quitGame();
@@ -48,7 +46,7 @@ public class GameController {
      * Updates the {@link GameView} based on the currently selected node.
      */
     private void refreshUI(){
-        view.render(game.getCurrentNode());
+        view.render();
     }
 
     /**

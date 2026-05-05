@@ -3,6 +3,7 @@ package no.uib.inf101.model.game;
 import no.uib.inf101.controller.ControllableGame;
 import no.uib.inf101.model.entity.Enemy;
 import no.uib.inf101.model.entity.Player;
+import no.uib.inf101.model.game.node.CombatNode;
 import no.uib.inf101.model.game.node.Node;
 import no.uib.inf101.model.loot.Loot;
 import no.uib.inf101.model.loot.LootFactory;
@@ -22,7 +23,6 @@ public class Game implements ControllableGame, ViewableGame {
     private final List<String> log;
     private final LootFactory lootFactory;
     private Node currentNode;
-    private boolean gameOver;
 
     /**
      * Creates a {@link Game}.
@@ -43,18 +43,15 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     @Override
-    public void choose(int index) {
-        if (gameOver) {
-            return;
+    public void choose(Choice choice) {
+
+        if(!currentNode.getChoices().contains(choice)){
+            throw new IllegalArgumentException("Choice '" + choice.text() + "' is not available from the current node." );
+        }
+        if(choice.type() != ChoiceType.NORMAL){
+            throw new IllegalArgumentException("Invalid ChoiceType. Got: " + choice.type());
         }
 
-        List<Choice> choices = currentNode.getChoices();
-
-        if (index < 0 || index >= choices.size()) {
-            throw new IllegalArgumentException("Index " + index + " out of bounds for choices of size " + choices.size());
-        }
-
-        Choice choice = choices.get(index);
         log("> " + choice.text());
 
         setCurrentNode(choice.nextNode());
@@ -66,15 +63,8 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     @Override
-    public boolean isGameOver() {
-        return gameOver;
-    }
-
-    /**
-     * Sets gameOver to true
-     */
-    public void setGameOver() {
-        gameOver = true;
+    public int getPlayerHp() {
+        return player.getHp();
     }
 
     /**
