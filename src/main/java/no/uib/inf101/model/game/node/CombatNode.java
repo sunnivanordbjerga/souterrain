@@ -16,6 +16,7 @@ public class CombatNode extends AbstractNode {
     private final Enemy enemy;
     private final Node onVictory;
     private final Node onDefeat;
+    private Boolean won = null;
 
     /**
      * Creates a {@link CombatNode}.
@@ -37,10 +38,14 @@ public class CombatNode extends AbstractNode {
 
     @Override
     public void onEnter(Game game) {
+        if(won != null) {
+            game.setCurrentNode(won ? onVictory : onDefeat);
+            return;
+        }
+
         super.onEnter(game);
 
-        boolean won = game.resolveCombat(enemy);
-
+        won = game.resolveCombat(enemy);
         game.setCurrentNode(won ? onVictory : onDefeat);
     }
 }
