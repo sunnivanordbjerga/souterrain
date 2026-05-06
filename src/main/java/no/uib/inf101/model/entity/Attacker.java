@@ -10,7 +10,6 @@ public interface Attacker {
      * damage within the {@link Attacker}'s attack range.
      *
      * @param target the entity to attack.
-     * @return the amount of damage dealt
      */
     int attack(Entity target);
 }

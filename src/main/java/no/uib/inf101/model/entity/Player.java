@@ -46,10 +46,10 @@ public class Player extends AbstractEntity implements Attacker {
         int minDamage = BASE_MIN_DAMAGE + damageBonus;
         int maxDamage = BASE_MAX_DAMAGE + damageBonus;
 
-        int damageDealt = random.nextInt(minDamage, maxDamage + 1);
-        target.takeDamage(damageDealt);
+        int damage = random.nextInt(minDamage, maxDamage + 1);
+        target.takeDamage(damage);
 
-        return damageDealt;
+        return damage;
     }
 
     /**

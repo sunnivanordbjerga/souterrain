@@ -100,26 +100,31 @@ class PlayerTest {
 
     @Test
     void modifyAttackRange_decreasesDamage() {
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5, new Random(2));
+        Player player2 = new Player(new Random(1));
+        Enemy grunt1 = new Enemy("Grunt", 10, 2, 5, new Random(2));
+        Enemy grunt2 = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
-        int before = player.attack(grunt);
+        int before = player.attack(grunt1);
 
-        player.modifyAttackRange(5);
-        player.modifyAttackRange(-2);
+        player2.modifyAttackRange(5);
+        player2.modifyAttackRange(-2);
 
-        int after = player.attack(grunt);
+
+        int after = player2.attack(grunt2);
         assertEquals(before + 5 - 2, after);
     }
 
     @Test
     void modifyAttackRange_capsAtZero() {
-        Enemy grunt = new Enemy("Grunt", 10, 2, 5, new Random(2));
+        Player player2 = new Player(new Random(1));
+        Enemy grunt1 = new Enemy("Grunt", 10, 2, 5, new Random(2));
+        Enemy grunt2 = new Enemy("Grunt", 10, 2, 5, new Random(2));
 
-        int before = player.attack(grunt);
+        int before = player.attack(grunt1);
 
-        player.modifyAttackRange(-2);
+        player2.modifyAttackRange(-2);
 
-        int after = player.attack(grunt);
+        int after = player2.attack(grunt2);
 
         assertEquals(before, after);
     }
