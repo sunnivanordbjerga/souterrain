@@ -1,12 +1,13 @@
 package no.uib.inf101.model.game.node;
 
+import no.uib.inf101.model.game.Choice;
+
 import java.util.Objects;
 
 /**
  * A {@link Node} containing text, automatically proceeding to the next node on enter.
  */
 public class TransitionNode extends AbstractNode {
-    private final Node nextNode;
 
     /**
      * Creates a {@link TransitionNode} with the given text and linked nextNode.
@@ -18,6 +19,8 @@ public class TransitionNode extends AbstractNode {
      */
     public TransitionNode(String text, Node nextNode) {
         super(text);
-        this.nextNode = Objects.requireNonNull(nextNode, "NextNode cannot be null");
+        Objects.requireNonNull(nextNode, "NextNode cannot be null");
+
+        this.addChoice(new Choice("Continue", nextNode));
     }
 }
