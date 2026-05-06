@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * A {@link Node} that ends the game. Used on game over or game win events.
- * Choices are pre-defined.
+ * Choices are predefined.
  */
 public class EndNode extends AbstractNode {
     private final EndType endType;
@@ -34,16 +34,16 @@ public class EndNode extends AbstractNode {
 
     @Override
     public List<Choice> getChoices() {
-        Choice retry = new Choice("Brave the darkness again", null, ChoiceType.RESTART);
+        Choice retry = new Choice("Brave the darkness again", null, null,  ChoiceType.RESTART);
 
         return switch (endType) {
             case GAME_OVER -> List.of(
                     retry,
-                    new Choice("Admit defeat", null, ChoiceType.QUIT)
+                    new Choice("Admit defeat", null, null, ChoiceType.QUIT)
             );
             case WIN -> List.of(
                     retry,
-                    new Choice("Accept freedom", null, ChoiceType.QUIT)
+                    new Choice("Accept freedom", null, null, ChoiceType.QUIT)
             );
         };
     }

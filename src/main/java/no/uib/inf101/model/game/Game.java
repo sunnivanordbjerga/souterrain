@@ -90,6 +90,15 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     /**
+     * Returns the {@link Player}.
+     *
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
      * Sets the current {@link Node} to the one provided.
      *
      * @param node the node to change to

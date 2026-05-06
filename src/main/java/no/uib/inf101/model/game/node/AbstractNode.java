@@ -55,4 +55,11 @@ public abstract class AbstractNode implements Node {
         Objects.requireNonNull(game, "Game cannot be null");
         game.log(text);
     }
+
+    /**
+     * Clears the choices list.
+     */
+    protected void clearChoices(){
+        choices.clear();
+    }
 }
