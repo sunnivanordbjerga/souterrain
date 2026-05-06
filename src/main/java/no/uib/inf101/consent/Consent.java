@@ -2,7 +2,7 @@ package no.uib.inf101.consent;
 
 /**
  * Boolean variables to give or not give consent for the use of semesteroppgave
- * 2 in teaching of computer science to future studenents at the Department of
+ * 2 in teaching of computer science to future students at the Department of
  * Informatics, University of Bergen.
  * 
  * The video sharing consent is only applicable if you produced a video for
@@ -11,7 +11,7 @@ package no.uib.inf101.consent;
 public class Consent {
 
     /**
-     * I give consent that my name is published along side this application (and
+     * I give consent that my name is published alongside this application (and
      * video).
      */
     public static final Boolean shareName = true;
@@ -23,7 +23,7 @@ public class Consent {
     public static final Boolean shareApplication = true;
 
     /**
-     * I give consent that the video produced along side this application is used
+     * I give consent that the video produced alongside this application is used
      * for teaching activities at the Department of Informatics, University
      * of Bergen.
      */
