@@ -5,7 +5,6 @@ package no.uib.inf101.model.game;
  */
 public enum ChoiceType {
     NORMAL,
-    BACK,
     USE,
     EQUIP,
     RESTART,

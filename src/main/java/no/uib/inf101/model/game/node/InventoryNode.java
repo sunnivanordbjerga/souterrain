@@ -30,7 +30,7 @@ public class InventoryNode extends AbstractNode {
 
         if (inventory.isEmpty()) {
             game.log("Nothing but empty pockets.");
-            addChoice(new Choice("Return", null, null, ChoiceType.BACK));
+            addChoice(new Choice("Return", game.getPreviousNode()));
         } else {
             for (Loot item : inventory) {
                 if (item instanceof Consumable c) {
@@ -39,7 +39,7 @@ public class InventoryNode extends AbstractNode {
                     addChoice(new Choice(item.getDisplayName(), null, () -> handleEquip(player, item, game), ChoiceType.EQUIP));
                 }
             }
-            addChoice(new Choice("Return", null, null, ChoiceType.BACK));
+            addChoice(new Choice("Return", game.getPreviousNode()));
         }
     }
 

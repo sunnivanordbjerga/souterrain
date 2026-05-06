@@ -50,7 +50,7 @@ public class StoryBuilder {
                 "You glance around the room."
         );
 
-        Node investigateArmor = createArmourBranch();
+        Node investigateArmor = createArmourBranch(lookAround);
         Node investigateCarvings = createCarvingsBranch(lookAround);
 
         lookAround.addChoice(new Choice("Investigate the armour", investigateArmor));
@@ -60,7 +60,7 @@ public class StoryBuilder {
         return lookAround;
     }
 
-    private Node createArmourBranch() {
+    private Node createArmourBranch(Node returnNode) {
         Node armorSuccess = new StoryNode("""
                 It is unmoving, but through the helmet slit,
                 you swear you see a flicker, as if you're being watched.""");
@@ -74,9 +74,9 @@ public class StoryBuilder {
                 "The armour stirs", undeadGuardian, afterCombat, gameOver
         );
 
-        returnFrom(armorSuccess,"Back away slowly");
+        armorSuccess.addChoice(new Choice("Back away slowly",returnNode));
         armorSuccess.addChoice(new Choice("Disturb its slumber", guardianCombat));
-        returnFrom(armorFailure, DEFAULT_RETURN);
+        armorFailure.addChoice(new Choice(DEFAULT_RETURN, returnNode));
         armorFailure.addChoice(new Choice("Take the helmet", guardianCombat));
         checkInventoryFrom(afterCombat);
         afterCombat.addChoice(new Choice("Proceed through the door", proceedTo(win)));
@@ -109,10 +109,6 @@ public class StoryBuilder {
 
     private Node proceedTo(Node nextNode){
         return new TransitionNode("You move on.", nextNode);
-    }
-
-    private void returnFrom(Node node, String text){
-        node.addChoice(new Choice(text, null, null, ChoiceType.BACK));
     }
 
     private void checkInventoryFrom(Node node){

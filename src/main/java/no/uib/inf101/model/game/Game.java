@@ -44,14 +44,6 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     @Override
-    public void returnToPreviousNode() {
-        if (previousNode == null) {
-            return;
-        }
-        setCurrentNode(previousNode);
-    }
-
-    @Override
     public void choose(Choice choice) {
 
         if (!currentNode.getChoices().contains(choice)) {
@@ -87,6 +79,14 @@ public class Game implements ControllableGame, ViewableGame {
     @Override
     public int getPlayerMaxHp() {
         return player.getMaxHp();
+    }
+
+    /**
+     * Returns the previous  {@link Node}
+     * @return the previous node
+     */
+    public Node getPreviousNode() {
+        return previousNode;
     }
 
     /**
