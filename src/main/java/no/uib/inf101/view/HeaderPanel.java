@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class HUDPanel extends JPanel {
+public class HeaderPanel extends JPanel {
     private final JLabel titleLabel;
     private final JLabel playerHpLabel;
 
@@ -13,7 +13,7 @@ public class HUDPanel extends JPanel {
      *
      * @param theme the {@link UITheme} used for colors and text
      */
-    public HUDPanel(UITheme theme){
+    public HeaderPanel(UITheme theme){
         this.setLayout(new BorderLayout());
         this.setBackground(theme.background());
         this.setBorder(new EmptyBorder(15,10,10,15));
