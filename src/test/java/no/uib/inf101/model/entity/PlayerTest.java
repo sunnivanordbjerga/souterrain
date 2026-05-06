@@ -1,7 +1,5 @@
-package no.uib.inf101.model.entity.player;
+package no.uib.inf101.model.entity;
 
-import no.uib.inf101.model.entity.Enemy;
-import no.uib.inf101.model.entity.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

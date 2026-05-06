@@ -1,6 +1,5 @@
-package no.uib.inf101.model.game.narration;
+package no.uib.inf101.model.game;
 
-import no.uib.inf101.model.game.Choice;
 import no.uib.inf101.model.game.node.Node;
 import no.uib.inf101.model.game.node.StoryNode;
 import org.junit.jupiter.api.BeforeEach;
