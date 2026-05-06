@@ -3,6 +3,7 @@ package no.uib.inf101.view;
 import no.uib.inf101.model.game.Choice;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.List;
 import java.util.function.Consumer;
@@ -14,13 +15,19 @@ public class ChoicePanel extends JPanel {
     // Uses a callback pattern to decouple view and controller
     // Approach learnt through external discussion
     private Consumer<Choice> onSelect;
+    private final JPanel buttonPanel;
     private final UITheme theme;
 
     public ChoicePanel(UITheme theme) {
         this.theme = theme;
+        this.buttonPanel = new JPanel();
+
         this.setBackground(theme.background());
-        this.setLayout(new GridLayout(0,1,0,20));
-        this.setBorder(BorderFactory.createEmptyBorder(20,100,20,100));
+        this.setLayout(new GridBagLayout());
+        buttonPanel.setLayout(new GridLayout(0,1,0,20));
+        buttonPanel.setBackground(theme.background());
+        buttonPanel.setBorder(new EmptyBorder(10,10,10,10));
+        this.add(buttonPanel);
     }
 
     public void setOnSelect(Consumer<Choice> onSelect) {
@@ -34,7 +41,7 @@ public class ChoicePanel extends JPanel {
      * @param choices the available {@link Choice}s
      */
     public void update(List<Choice> choices) {
-        removeAll();
+        buttonPanel.removeAll();
 
         if (choices.isEmpty()) {
             return;
@@ -48,14 +55,14 @@ public class ChoicePanel extends JPanel {
                 }
             });
 
-            this.add(button);
+            buttonPanel.add(button);
         }
     }
 
     private void configureButton(JButton button) {
         button.setBackground(theme.button());
         button.setForeground(theme.textColor());
-        button.setBorder(null);
+        button.setBorder(new EmptyBorder(15,15,15,15));
         button.setFont(theme.small());
         button.setAlignmentX(CENTER_ALIGNMENT);
     }
