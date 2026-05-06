@@ -115,19 +115,18 @@ public class Player extends AbstractEntity implements Attacker {
      */
     public void equip(Equipable item) {
         Objects.requireNonNull(item, "Item cannot be null.");
-        Slot slot = item.getSlot();
-        Equipable oldEquip = equipped.get(slot);
 
-        if (oldEquip == item) {
-            return;
-        }
         if(!inventory.contains(item)) {
             throw new IllegalArgumentException("The " + item.getDisplayName() + " is not in the inventory.");
         }
-        if (oldEquip != null) {
-            oldEquip.onUnequip(this);
-            addItem(oldEquip);
+
+        Slot slot = item.getSlot();
+
+        if (equipped.get(slot) == item) {
+            return;
         }
+
+        unequipOld(slot);
 
         inventory.remove(item);
         equipped.put(slot, item);
@@ -142,5 +141,13 @@ public class Player extends AbstractEntity implements Attacker {
         this.hp = maxHp;
         this.defenseBonus = 0;
         this.damageBonus = 0;
+    }
+
+    private void unequipOld(Slot slot) {
+        Equipable oldEquip = equipped.get(slot);
+        if (oldEquip != null) {
+            oldEquip.onUnequip(this);
+            addItem(oldEquip);
+        }
     }
 }
