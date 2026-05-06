@@ -1,8 +1,9 @@
 package no.uib.inf101.model.entity;
 
 import no.uib.inf101.model.loot.Loot;
+import no.uib.inf101.model.loot.equipable.Equipable;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * Represents the player controlled character.
@@ -15,6 +16,13 @@ public class Player extends AbstractEntity implements Attacker {
     private int defenseBonus;
     private int damageBonus;
 
+    public enum Slot {
+        ARMOR,
+        WEAPON
+    }
+
+    private final Map<Slot, Equipable> equipped = new EnumMap<>(Slot.class);
+    private final List<Loot> inventory;
 
     /**
      * Creates a new {@link Player}
@@ -24,6 +32,7 @@ public class Player extends AbstractEntity implements Attacker {
         this.random = random;
         this.defenseBonus = 0;
         this.damageBonus = 0;
+        this.inventory = new ArrayList<>();
     }
 
     @Override
@@ -85,15 +94,50 @@ public class Player extends AbstractEntity implements Attacker {
      * Adds the given {@link Loot} item to the {@link Player}'s inventory.
      *
      * @param item the loot item to add
+     * @throws NullPointerException if item is null
      */
-    public void addItem(Loot item){
-        // TODO addItem method
+    public void addItem(Loot item) {
+        inventory.add(Objects.requireNonNull(item, "Item cannot be null."));
+    }
+
+    /**
+     * Equips an {@link Equipable} item to it's corresponding {@link Slot},
+     * removing it from the inventory and applying its effect to the {@link Player}.
+     * <p>
+     * If the slot is occupied, the currently equipped item is unequipped,
+     * returned to the inventory, and its effect removed.
+     * <p>
+     * If the item is already equipped, no changes are made.
+     *
+     * @param item the item to equip
+     * @throws NullPointerException if item is null
+     * @throws IllegalArgumentException if the item is not in the inventory
+     */
+    public void equip(Equipable item) {
+        Objects.requireNonNull(item, "Item cannot be null.");
+        Slot slot = item.getSlot();
+        Equipable oldEquip = equipped.get(slot);
+
+        if (oldEquip == item) {
+            return;
+        }
+        if(!inventory.contains(item)) {
+            throw new IllegalArgumentException("The " + item.getDisplayName() + " is not in the inventory.");
+        }
+        if (oldEquip != null) {
+            oldEquip.onUnequip(this);
+            addItem(oldEquip);
+        }
+
+        inventory.remove(item);
+        equipped.put(slot, item);
+        item.onEquip(this);
     }
 
     /**
      * Resets the {@link Player} to it's initial state.
      */
-    public void reset(){
+    public void reset() {
         this.maxHp = 50;
         this.hp = maxHp;
         this.defenseBonus = 0;

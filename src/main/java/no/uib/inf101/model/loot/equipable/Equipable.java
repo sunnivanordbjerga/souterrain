@@ -9,16 +9,23 @@ import no.uib.inf101.model.loot.Loot;
 public interface Equipable extends Loot {
 
     /**
-     * Equips the item, applying its effect to the {@link Player}.
+     * Returns which {@link Player.Slot} this {@link Equipable} belongs to.
+     *
+     * @return this equippable's slot
+     */
+    Player.Slot getSlot();
+
+    /**
+     * Applies this {@link Equipable}'s effect to the {@link Player}.
      *
      * @param player the player to equip the item on
      */
-    void equip(Player player);
+    void onEquip(Player player);
 
     /**
-     * Unequips the item, removing its effect from the {@link Player}.
+     * Removes  this {@link Equipable}'s effect from the {@link Player}.
      *
      * @param player the player to unequip the item from
      */
-    void unequip(Player player);
+    void onUnequip(Player player);
 }

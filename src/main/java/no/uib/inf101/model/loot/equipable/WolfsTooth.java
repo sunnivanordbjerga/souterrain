@@ -10,14 +10,18 @@ public class WolfsTooth implements Equipable {
     private static final String DISPLAY_NAME = "Wolf's Tooth";
     private static final int DAMAGE_BONUS = 2;
 
+    @Override
+    public Player.Slot getSlot() {
+        return Player.Slot.WEAPON;
+    }
 
     @Override
-    public void equip(Player player) {
+    public void onEquip(Player player) {
         player.modifyAttackRange(DAMAGE_BONUS);
     }
 
     @Override
-    public void unequip(Player player) {
+    public void onUnequip(Player player) {
         player.modifyAttackRange(-DAMAGE_BONUS);
     }
 
