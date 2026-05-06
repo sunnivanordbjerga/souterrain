@@ -40,7 +40,8 @@ public class StoryBuilder {
                 Drip points in the ceiling form a steady, echoing rhythm,
                 only interrupted by scurrying bugs stirred awake by your presence.
                 In the corner, a lone suit of armour sits slumped against the wall, as if resting.
-                Ahead, a carved stone entrance leads on."""
+                Ahead, a carved stone entrance leads on.""",
+                "You glance around the room."
         );
 
         Node investigateArmor = createArmourBranch(lookAround);
