@@ -23,6 +23,7 @@ public class Game implements ControllableGame, ViewableGame {
     private final List<String> log;
     private final LootFactory lootFactory;
     private Node currentNode;
+    private Node previousNode;
 
     /**
      * Creates a {@link Game}.
@@ -45,10 +46,10 @@ public class Game implements ControllableGame, ViewableGame {
     @Override
     public void choose(Choice choice) {
 
-        if(!currentNode.getChoices().contains(choice)){
-            throw new IllegalArgumentException("Choice '" + choice.text() + "' is not available from the current node." );
+        if (!currentNode.getChoices().contains(choice)) {
+            throw new IllegalArgumentException("Choice '" + choice.text() + "' is not available from the current node.");
         }
-        if(choice.type() != ChoiceType.NORMAL){
+        if (choice.type() != ChoiceType.NORMAL) {
             throw new IllegalArgumentException("Invalid ChoiceType. Got: " + choice.type());
         }
 
@@ -76,7 +77,7 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     @Override
-    public int getPlayerMaxHp(){
+    public int getPlayerMaxHp() {
         return player.getMaxHp();
     }
 
@@ -86,8 +87,19 @@ public class Game implements ControllableGame, ViewableGame {
      * @param node the node to change to
      */
     public void setCurrentNode(Node node) {
+        this.previousNode = this.currentNode;
         this.currentNode = Objects.requireNonNull(node, "Node cannot be null");
         currentNode.onEnter(this);
+    }
+
+    /**
+     * Sets the current {@link Node} to the one preceding it.
+     */
+    public void returnToPreviousNode() {
+        if (previousNode == null) {
+            return;
+        }
+        setCurrentNode(previousNode);
     }
 
     /**
