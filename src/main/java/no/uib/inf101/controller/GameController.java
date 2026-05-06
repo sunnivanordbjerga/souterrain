@@ -34,6 +34,7 @@ public class GameController {
     public void handleChoice(Choice choice) {
         switch (choice.type()) {
             case NORMAL -> game.choose(choice);
+            case BACK ->  game.returnToPreviousNode();
             case RESTART -> game.reset();
             case QUIT -> {
                 quitGame();

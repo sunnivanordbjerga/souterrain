@@ -19,6 +19,11 @@ public interface ControllableGame {
     void choose(Choice choice);
 
     /**
+     * Sets the current {@link Node} to the one preceding it.
+     */
+    void returnToPreviousNode();
+
+    /**
      * Resets the {@link Game} to it's initial state.
      */
     void reset();

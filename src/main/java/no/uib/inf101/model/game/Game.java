@@ -44,6 +44,14 @@ public class Game implements ControllableGame, ViewableGame {
     }
 
     @Override
+    public void returnToPreviousNode() {
+        if (previousNode == null) {
+            return;
+        }
+        setCurrentNode(previousNode);
+    }
+
+    @Override
     public void choose(Choice choice) {
 
         if (!currentNode.getChoices().contains(choice)) {
@@ -90,16 +98,6 @@ public class Game implements ControllableGame, ViewableGame {
         this.previousNode = this.currentNode;
         this.currentNode = Objects.requireNonNull(node, "Node cannot be null");
         currentNode.onEnter(this);
-    }
-
-    /**
-     * Sets the current {@link Node} to the one preceding it.
-     */
-    public void returnToPreviousNode() {
-        if (previousNode == null) {
-            return;
-        }
-        setCurrentNode(previousNode);
     }
 
     /**
