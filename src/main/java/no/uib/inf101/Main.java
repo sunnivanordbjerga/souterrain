@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class Main {
     private static final String WINDOW_TITLE = "Souterrain";
-    private static final Dimension WINDOW_SIZE = new Dimension(500,680);
+    private static final Dimension WINDOW_SIZE = new Dimension(450,680);
 
     /**
      * Initializes the {@link Game}, {@link GameView} and {@link GameController}
@@ -28,10 +28,11 @@ public class Main {
         GameView view = new GameView(game);
         GameController controller = new GameController(game, view, frame::dispose);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(WINDOW_SIZE);
         frame.setContentPane(view);
         frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         view.render();
