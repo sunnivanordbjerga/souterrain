@@ -63,7 +63,7 @@ public class StoryBuilder {
                 the armour once protected.""");
 
         Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10, EquipmentType.HOLLOW_HELM, random);
-        Node afterCombat = new StoryNode("The knight crumples to the ground. The armor is hollow.");
+        Node afterCombat = new StoryNode("The armor lays unmoving. It is hollow.");
         Node guardianCombat = new CombatNode(
                 "The armour stirs", undeadGuardian, afterCombat, gameOver
         );
