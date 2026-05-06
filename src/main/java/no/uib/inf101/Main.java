@@ -17,7 +17,7 @@ public class Main {
 
     /**
      * Initializes the {@link Game}, {@link GameView} and {@link GameController}
-     * and starts the game.
+     * and displays the main window.
      */
     public static void main(String[] args) {
         FlatDarkLaf.setup();
