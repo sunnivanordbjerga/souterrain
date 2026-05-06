@@ -7,9 +7,11 @@ import java.awt.*;
 public class HeaderPanel extends JPanel {
     private final JLabel titleLabel;
     private final JLabel playerHpLabel;
+    private static final String TITLE = "SOUTERRAIN";
 
     /**
-     * Displays the game HUD (heads-up display), showing player-related UI like HP.
+     * Displays the header, including a title and the game HUD (heads-up display),
+     * showing player-related UI like HP.
      *
      * @param theme the {@link UITheme} used for colors and text
      */
@@ -33,7 +35,7 @@ public class HeaderPanel extends JPanel {
      * @param playerMaxHP the player's max HP
      */
     public void update(int playerHP, int playerMaxHP){
-        titleLabel.setText("SOUTERRAIN");
+        titleLabel.setText(TITLE);
         playerHpLabel.setText("HP: " + playerHP + " / " + playerMaxHP);
     }
 
