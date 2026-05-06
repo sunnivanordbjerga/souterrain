@@ -69,9 +69,9 @@ public class Game implements ControllableGame, ViewableGame {
     @Override
     public void reset() {
         StoryBuilder storyBuilder = new StoryBuilder(random);
-        setCurrentNode(storyBuilder.buildStory());
         player.reset();
         this.log.clear();
+        setCurrentNode(storyBuilder.buildStory());
     }
 
     @Override
