@@ -9,12 +9,13 @@ import java.util.Objects;
  * <p>
  * The resulting next node is determined based on a random
  * "dice roll" and successChance between 0 (guaranteed failure)
- * and 1 (guaranteed success).
+ * and 1 (guaranteed success) and cached for future visits.
  */
 public class SkillCheckNode extends AbstractNode {
     private final double successChance;
     private final Node successNode;
     private final Node failureNode;
+    private Boolean result = null;
 
     /**
      * Creates a {@link SkillCheckNode}.
@@ -45,10 +46,12 @@ public class SkillCheckNode extends AbstractNode {
 
     @Override
     public void onEnter(Game game) {
-        super.onEnter(game);
 
-        boolean success = game.roll(successChance);
+        if (result == null) {
+            super.onEnter(game);
+            result = game.roll(successChance);
+        }
 
-        game.setCurrentNode(success ? successNode : failureNode);
+        game.setCurrentNode(result ? successNode : failureNode);
     }
 }
