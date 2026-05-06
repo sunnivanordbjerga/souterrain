@@ -141,6 +141,7 @@ public class Game implements ControllableGame, ViewableGame {
             log(randomPlayerAttackText(enemy, playerDamage));
 
             if (!enemy.isAlive()) {
+                log("The " + enemy.getDisplayName() + " crumples to the ground.");
                 handleLoot(enemy);
                 return true;
             }
@@ -182,7 +183,6 @@ public class Game implements ControllableGame, ViewableGame {
                     "You strike the " + enemyName + ", dealing " + damage + " damage.",
                     "You land a blow on the " + enemyName + ", hitting it for " + damage + "."
             );
-
         }
         return variants.get(random.nextInt(variants.size()));
     }
