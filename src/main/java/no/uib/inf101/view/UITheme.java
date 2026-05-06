@@ -7,7 +7,6 @@ import java.awt.*;
  *
  * @param background the background color
  * @param button     the button color
- * @param frame      the frame color
  * @param textColor  the text color
  * @param title      the title font
  * @param regular    the regular font
@@ -15,7 +14,6 @@ import java.awt.*;
  */
 public record UITheme(Color background,
                       Color button,
-                      Color frame,
                       Color textColor,
                       Font title,
                       Font regular,
@@ -30,7 +28,6 @@ public record UITheme(Color background,
         return new UITheme(
                 new Color(18, 18, 18),
                 new Color(45, 45, 50),
-                new Color(30, 30, 30),
                 new Color(220, 220, 220),
                 new Font("Serif", Font.BOLD, 26),
                 new Font("Serif", Font.PLAIN, 18),

@@ -32,6 +32,7 @@ public class HealthPotion implements Consumable {
     public void use(Player player) {
         Objects.requireNonNull(player, "Player cannot be null");
         player.heal(healAmount);
+        player.removeItem(this);
     }
 
     @Override

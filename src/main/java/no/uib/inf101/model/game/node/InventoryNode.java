@@ -34,12 +34,21 @@ public class InventoryNode extends AbstractNode {
         } else {
             for (Loot item : inventory) {
                 if (item instanceof Consumable c) {
-                    addChoice(new Choice(item.getDisplayName(), null, () -> c.use(player), ChoiceType.USE));
+                    addChoice(new Choice(item.getDisplayName(), null, () -> handleUse(player, c, game), ChoiceType.USE));
                 } else {
-                    addChoice(new Choice(item.getDisplayName(), null, () -> player.equip((Equipable) item), ChoiceType.EQUIP));
+                    addChoice(new Choice(item.getDisplayName(), null, () -> handleEquip(player, item, game), ChoiceType.EQUIP));
                 }
             }
             addChoice(new Choice("Return", null, null, ChoiceType.BACK));
         }
+    }
+
+    private void handleEquip(Player player, Loot item, Game game){
+        player.equip((Equipable) item);
+        this.onEnter(game);
+    }
+    private void handleUse(Player player, Consumable item, Game game){
+        item.use(player);
+        this.onEnter(game);
     }
 }

@@ -40,7 +40,7 @@ public class GameController {
                 quitGame();
                 return;
             }
-            default -> choice.execute();
+            case USE, EQUIP -> choice.execute();
         }
         refreshUI();
     }

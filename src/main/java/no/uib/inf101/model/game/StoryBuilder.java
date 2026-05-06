@@ -6,17 +6,23 @@ import no.uib.inf101.model.loot.equipable.EquipmentType;
 
 import java.util.Random;
 
-import static no.uib.inf101.model.game.node.EndNode.EndType.GAME_OVER;
+import static no.uib.inf101.model.game.node.EndNode.EndType.*;
 
 /**
  * Responsible for initializing and connecting all {@link Node}s and {@link Choice}s
  */
 public class StoryBuilder {
     private final Random random;
-    private Node gameOver;
+    private final Node gameOver;
+    private final Node win;
+    private final Node inventory;
+    private static final String DEFAULT_RETURN = "Step Back";
 
     public StoryBuilder(Random random){
         this.random = random;
+        this.gameOver = new EndNode("The light leaves your eyes", GAME_OVER);
+        this.win = new EndNode("You are victorious!", WIN);
+        this.inventory = new InventoryNode();
     }
 
     /**
@@ -25,12 +31,12 @@ public class StoryBuilder {
      * @return the first {@link Node}
      */
     public Node buildStory() {
-        this.gameOver = new EndNode("The light leaves your eyes", GAME_OVER);
         Node start = new StoryNode("The air is stale and uninviting");
         Node lookAroundStartRoom = createLookAroundStartRoom();
 
-        start.addChoice(new Choice("Proceed through the door", proceedTo(gameOver)));//TODO: Set next room
         start.addChoice(new Choice("Look around", lookAroundStartRoom));
+        checkInventoryFrom(start);
+
         return start;
     }
 
@@ -44,17 +50,17 @@ public class StoryBuilder {
                 "You glance around the room."
         );
 
-        Node investigateArmor = createArmourBranch(lookAround);
+        Node investigateArmor = createArmourBranch();
         Node investigateCarvings = createCarvingsBranch(lookAround);
 
         lookAround.addChoice(new Choice("Investigate the armour", investigateArmor));
         lookAround.addChoice(new Choice("Investigate the stone carvings", investigateCarvings));
-        lookAround.addChoice(new Choice("Proceed through the door", proceedTo(gameOver))); //TODO
+        checkInventoryFrom(lookAround);
 
         return lookAround;
     }
 
-    private Node createArmourBranch(Node returnNode) {
+    private Node createArmourBranch() {
         Node armorSuccess = new StoryNode("""
                 It is unmoving, but through the helmet slit,
                 you swear you see a flicker, as if you're being watched.""");
@@ -62,16 +68,18 @@ public class StoryBuilder {
                 It is unmoving. Nothing but dust and bones remain of what
                 the armour once protected.""");
 
-        Enemy undeadGuardian = new Enemy("Undead Guardian", 25, 6, 10, EquipmentType.HOLLOW_HELM, random);
+        Enemy undeadGuardian = new Enemy("Undead Guardian", 60, 6, 10, EquipmentType.HOLLOW_HELM, random);
         Node afterCombat = new StoryNode("The armor lays unmoving. It is hollow.");
         Node guardianCombat = new CombatNode(
                 "The armour stirs", undeadGuardian, afterCombat, gameOver
         );
 
-        armorSuccess.addChoice(new Choice("Back away slowly", returnNode));
+        returnFrom(armorSuccess,"Back away slowly");
         armorSuccess.addChoice(new Choice("Disturb its slumber", guardianCombat));
-        armorFailure.addChoice(new Choice("Step back", returnNode));
+        returnFrom(armorFailure, DEFAULT_RETURN);
         armorFailure.addChoice(new Choice("Take the helmet", guardianCombat));
+        checkInventoryFrom(afterCombat);
+        afterCombat.addChoice(new Choice("Proceed through the door", proceedTo(win)));
 
         return new SkillCheckNode(
                 "You crouch down and look at the knight.",
@@ -84,7 +92,7 @@ public class StoryBuilder {
         Node carvingsSuccess = new StoryNode("""
                 You recognise the letters as an ancient script. Though time has
                 eroded the full message, you can make out a phrase roughly translating to
-                ..."on his right-hand side".""");
+                ..."ran out of time".""");
         Node carvingsFailure = new StoryNode("What little remains legible of the carving make no sense to you.");
 
         Choice stepBack = new Choice("Step back", returnNode);
@@ -101,5 +109,13 @@ public class StoryBuilder {
 
     private Node proceedTo(Node nextNode){
         return new TransitionNode("You move on.", nextNode);
+    }
+
+    private void returnFrom(Node node, String text){
+        node.addChoice(new Choice(text, null, null, ChoiceType.BACK));
+    }
+
+    private void checkInventoryFrom(Node node){
+        node.addChoice(new Choice("Check belongings", inventory));
     }
 }

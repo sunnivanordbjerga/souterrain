@@ -110,6 +110,16 @@ public class Player extends AbstractEntity implements Attacker {
     }
 
     /**
+     * Removes the given {@link Loot} item to the {@link Player}'s inventory.
+     *
+     * @param item the loot item to remove
+     * @throws NullPointerException if item is null
+     */
+    public void removeItem(Loot item) {
+        inventory.remove(Objects.requireNonNull(item, "Item cannot be null."));
+    }
+
+    /**
      * Equips an {@link Equipable} item to it's corresponding {@link Slot},
      * removing it from the inventory and applying its effect to the {@link Player}.
      * <p>
