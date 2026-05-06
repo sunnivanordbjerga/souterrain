@@ -28,10 +28,10 @@ public record UITheme(Color background,
      */
     public static UITheme defaultTheme() {
         return new UITheme(
-                Color.BLACK,
-                Color.DARK_GRAY,
-                Color.LIGHT_GRAY,
-                Color.WHITE,
+                new Color(18, 18, 18),
+                new Color(45, 45, 50),
+                new Color(30, 30, 30),
+                new Color(220, 220, 220),
                 new Font("Serif", Font.BOLD, 26),
                 new Font("Serif", Font.PLAIN, 18),
                 new Font("Serif", Font.PLAIN, 14)
