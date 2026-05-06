@@ -26,7 +26,7 @@ public class Main {
 
         Game game = new Game();
         GameView view = new GameView(game);
-        GameController controller = new GameController(game, view, frame::dispose);
+        new GameController(game, view, frame::dispose);
 
         frame.setPreferredSize(WINDOW_SIZE);
         frame.setContentPane(view);
