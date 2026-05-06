@@ -1,6 +1,7 @@
 package no.uib.inf101.view;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.List;
 
@@ -40,9 +41,10 @@ public class StoryPanel extends JPanel {
         textArea.setEnabled(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setRows(30);
-        textArea.setColumns(20);
+        textArea.setRows(15);
+        textArea.setColumns(60);
         textArea.setMargin(new Insets(20, 20, 20, 20));
+        textArea.setBorder(new EmptyBorder(20,30,20,30));
 
         textArea.setBackground(theme.background());
         textArea.setForeground(theme.textColor());
