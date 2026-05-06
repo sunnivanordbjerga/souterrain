@@ -9,14 +9,13 @@ import java.util.function.Consumer;
 
 /**
  * Renders the current game state by delegating to
- * the {@link StoryPanel}, {@link ChoicePanel}.
+ * the appropriate panels.
  */
 public class GameView extends JPanel {
     private final ViewableGame game;
-    private final HUDPanel statPanel;
+    private final HeaderPanel statPanel;
     private final ChoicePanel choicePanel;
     private final StoryPanel storyPanel;
-
 
     /**
      * Creates a new {@link GameView}.
@@ -26,7 +25,7 @@ public class GameView extends JPanel {
     public GameView(ViewableGame game) {
         this.game = game;
         UITheme theme = UITheme.defaultTheme();
-        this.statPanel = new HUDPanel(theme);
+        this.statPanel = new HeaderPanel(theme);
         this.choicePanel = new ChoicePanel(theme);
         this.storyPanel = new StoryPanel(theme);
 
