@@ -1,9 +1,11 @@
 package no.uib.inf101.view;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class HUDPanel extends JPanel {
+    private final JLabel titleLabel;
     private final JLabel playerHpLabel;
 
     /**
@@ -12,13 +14,16 @@ public class HUDPanel extends JPanel {
      * @param theme the {@link UITheme} used for colors and text
      */
     public HUDPanel(UITheme theme){
-        this.setLayout( new FlowLayout(FlowLayout.RIGHT));
+        this.setLayout(new BorderLayout());
         this.setBackground(theme.background());
+        this.setBorder(new EmptyBorder(15,10,10,15));
 
+        this.titleLabel = new JLabel();
         this.playerHpLabel = new JLabel();
-        configureLabel(theme);
-
-        this.add(playerHpLabel);
+        configureTitleLabel(theme);
+        configureHPLabel(theme);
+        this.add(titleLabel,BorderLayout.CENTER);
+        this.add(playerHpLabel,BorderLayout.LINE_END);
     }
 
     /**
@@ -28,12 +33,20 @@ public class HUDPanel extends JPanel {
      * @param playerMaxHP the player's max HP
      */
     public void update(int playerHP, int playerMaxHP){
+        titleLabel.setText("SOUTERRAIN");
         playerHpLabel.setText("HP: " + playerHP + " / " + playerMaxHP);
     }
 
-    private void configureLabel(UITheme theme){
+    private void configureHPLabel(UITheme theme){
         playerHpLabel.setFont(theme.small());
-        playerHpLabel.setHorizontalTextPosition(SwingConstants.RIGHT);
         playerHpLabel.setForeground(theme.textColor());
+        playerHpLabel.setHorizontalAlignment(JLabel.CENTER);
+        playerHpLabel.setBorder(new EmptyBorder(0,0,0,10));
+    }
+
+    private void configureTitleLabel(UITheme theme){
+        titleLabel.setFont(theme.title());
+        titleLabel.setForeground(theme.textColor());
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
     }
 }

@@ -20,7 +20,7 @@ public class ChoicePanel extends JPanel {
         this.theme = theme;
         this.setBackground(theme.background());
         this.setLayout(new GridLayout(0,1,0,20));
-        this.setBorder(BorderFactory.createEmptyBorder(20,300,20,300));
+        this.setBorder(BorderFactory.createEmptyBorder(20,100,20,100));
     }
 
     public void setOnSelect(Consumer<Choice> onSelect) {

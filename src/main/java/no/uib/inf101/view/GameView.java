@@ -37,13 +37,6 @@ public class GameView extends JPanel {
         this.add(choicePanel, BorderLayout.PAGE_END);
     }
 
-    @Override
-    public void paintComponent(Graphics g) { //
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-        //TODO: draw background frame and title, else delete
-    }
-
     /**
      * Renders the {@link ViewableGame}'s current state.
      */
