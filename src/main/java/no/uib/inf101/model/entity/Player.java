@@ -91,6 +91,15 @@ public class Player extends AbstractEntity implements Attacker {
     }
 
     /**
+     * Returns a copy of the {@link Player}'s inventory.
+     *
+     * @return the player inventory
+     */
+    public List<Loot> getInventory() {
+        return List.copyOf(inventory);
+    }
+
+    /**
      * Adds the given {@link Loot} item to the {@link Player}'s inventory.
      *
      * @param item the loot item to add
@@ -110,13 +119,13 @@ public class Player extends AbstractEntity implements Attacker {
      * If the item is already equipped, no changes are made.
      *
      * @param item the item to equip
-     * @throws NullPointerException if item is null
+     * @throws NullPointerException     if item is null
      * @throws IllegalArgumentException if the item is not in the inventory
      */
     public void equip(Equipable item) {
         Objects.requireNonNull(item, "Item cannot be null.");
 
-        if(!inventory.contains(item)) {
+        if (!inventory.contains(item)) {
             throw new IllegalArgumentException("The " + item.getDisplayName() + " is not in the inventory.");
         }
 
