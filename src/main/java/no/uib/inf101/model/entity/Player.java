@@ -158,6 +158,10 @@ public class Player extends AbstractEntity implements Attacker {
     public void reset() {
         this.maxHp = 50;
         this.hp = maxHp;
+        for (Slot slot : Slot.values()) {
+            equipped.put(slot, null);
+        }
+        inventory.clear();
         this.defenseBonus = 0;
         this.damageBonus = 0;
     }
