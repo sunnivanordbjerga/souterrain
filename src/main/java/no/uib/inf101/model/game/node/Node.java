@@ -1,7 +1,7 @@
 package no.uib.inf101.model.game.node;
 
-import no.uib.inf101.model.game.Game;
 import no.uib.inf101.model.game.Choice;
+import no.uib.inf101.model.game.Game;
 
 import java.util.List;
 

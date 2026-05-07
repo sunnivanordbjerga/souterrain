@@ -1,7 +1,7 @@
 package no.uib.inf101.model.game.node;
 
-import no.uib.inf101.model.game.Game;
 import no.uib.inf101.model.game.Choice;
+import no.uib.inf101.model.game.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +20,12 @@ public abstract class AbstractNode implements Node {
      * and an empty list of {@link Choice}s.
      *
      * @param text the text corresponding to this node; cannot be blank
-     * @throws NullPointerException if text is null
+     * @throws NullPointerException     if text is null
      * @throws IllegalArgumentException if text is blank
      */
     public AbstractNode(String text) {
         this.text = Objects.requireNonNull(text, "Text cannot be null");
-        if(text.isBlank()){
+        if (text.isBlank()) {
             throw new IllegalArgumentException("Text cannot be blank");
         }
 
@@ -59,7 +59,7 @@ public abstract class AbstractNode implements Node {
     /**
      * Clears the choices list.
      */
-    protected void clearChoices(){
+    protected void clearChoices() {
         choices.clear();
     }
 }

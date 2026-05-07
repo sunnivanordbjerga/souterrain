@@ -34,7 +34,7 @@ public class EndNode extends AbstractNode {
 
     @Override
     public List<Choice> getChoices() {
-        Choice retry = new Choice("Brave the darkness again", null, null,  ChoiceType.RESTART);
+        Choice retry = new Choice("Brave the darkness again", null, null, ChoiceType.RESTART);
 
         return switch (endType) {
             case GAME_OVER -> List.of(

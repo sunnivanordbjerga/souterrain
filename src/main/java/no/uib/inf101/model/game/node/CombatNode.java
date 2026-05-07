@@ -21,11 +21,11 @@ public class CombatNode extends AbstractNode {
     /**
      * Creates a {@link CombatNode}.
      *
-     * @param text the text to show upon entering the combat
-     * @param enemy the attacking enemy
+     * @param text      the text to show upon entering the combat
+     * @param enemy     the attacking enemy
      * @param onVictory the {@link Node} to proceed to on {@link Player} victory
-     * @param onDefeat the {@link Node} to proceed to on {@link Player} defeat
-     * @throws NullPointerException if text, enemy, onVictory or onDefeat is null
+     * @param onDefeat  the {@link Node} to proceed to on {@link Player} defeat
+     * @throws NullPointerException     if text, enemy, onVictory or onDefeat is null
      * @throws IllegalArgumentException if text is blank
      */
     public CombatNode(String text, Enemy enemy, Node onVictory, Node onDefeat) {
@@ -38,7 +38,7 @@ public class CombatNode extends AbstractNode {
 
     @Override
     public void onEnter(Game game) {
-        if(won != null) {
+        if (won != null) {
             game.setCurrentNode(won ? onVictory : onDefeat);
             return;
         }

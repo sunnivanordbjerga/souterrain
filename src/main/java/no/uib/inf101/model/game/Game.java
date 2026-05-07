@@ -83,6 +83,7 @@ public class Game implements ControllableGame, ViewableGame {
 
     /**
      * Returns the previous  {@link Node}
+     *
      * @return the previous node
      */
     public Node getPreviousNode() {

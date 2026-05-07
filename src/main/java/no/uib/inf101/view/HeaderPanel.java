@@ -15,38 +15,38 @@ public class HeaderPanel extends JPanel {
      *
      * @param theme the {@link UITheme} used for colors and text
      */
-    public HeaderPanel(UITheme theme){
+    public HeaderPanel(UITheme theme) {
         this.setLayout(new BorderLayout());
         this.setBackground(theme.background());
-        this.setBorder(new EmptyBorder(15,10,10,15));
+        this.setBorder(new EmptyBorder(15, 10, 10, 15));
 
         this.titleLabel = new JLabel();
         this.playerHpLabel = new JLabel();
         configureTitleLabel(theme);
         configureHPLabel(theme);
-        this.add(titleLabel,BorderLayout.CENTER);
-        this.add(playerHpLabel,BorderLayout.LINE_END);
+        this.add(titleLabel, BorderLayout.CENTER);
+        this.add(playerHpLabel, BorderLayout.LINE_END);
     }
 
     /**
      * Updates the HUD.
      *
-     * @param playerHP the player's current HP
+     * @param playerHP    the player's current HP
      * @param playerMaxHP the player's max HP
      */
-    public void update(int playerHP, int playerMaxHP){
+    public void update(int playerHP, int playerMaxHP) {
         titleLabel.setText(TITLE);
         playerHpLabel.setText("HP: " + playerHP + " / " + playerMaxHP);
     }
 
-    private void configureHPLabel(UITheme theme){
+    private void configureHPLabel(UITheme theme) {
         playerHpLabel.setFont(theme.small());
         playerHpLabel.setForeground(theme.textColor());
         playerHpLabel.setHorizontalAlignment(JLabel.CENTER);
-        playerHpLabel.setBorder(new EmptyBorder(0,0,0,10));
+        playerHpLabel.setBorder(new EmptyBorder(0, 0, 0, 10));
     }
 
-    private void configureTitleLabel(UITheme theme){
+    private void configureTitleLabel(UITheme theme) {
         titleLabel.setFont(theme.title());
         titleLabel.setForeground(theme.textColor());
         titleLabel.setHorizontalAlignment(JLabel.CENTER);

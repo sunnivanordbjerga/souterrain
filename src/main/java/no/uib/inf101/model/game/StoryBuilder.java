@@ -6,7 +6,8 @@ import no.uib.inf101.model.loot.equipable.EquipmentType;
 
 import java.util.Random;
 
-import static no.uib.inf101.model.game.node.EndNode.EndType.*;
+import static no.uib.inf101.model.game.node.EndNode.EndType.GAME_OVER;
+import static no.uib.inf101.model.game.node.EndNode.EndType.WIN;
 
 /**
  * Responsible for initializing and connecting all {@link Node}s and {@link Choice}s
@@ -18,7 +19,7 @@ public class StoryBuilder {
     private final Node inventory;
     private static final String DEFAULT_RETURN = "Step Back";
 
-    public StoryBuilder(Random random){
+    public StoryBuilder(Random random) {
         this.random = random;
         this.gameOver = new EndNode("The light leaves your eyes", GAME_OVER);
         this.win = new EndNode("You are victorious!", WIN);
@@ -74,7 +75,7 @@ public class StoryBuilder {
                 "The armour stirs", undeadGuardian, afterCombat, gameOver
         );
 
-        armorSuccess.addChoice(new Choice("Back away slowly",returnNode));
+        armorSuccess.addChoice(new Choice("Back away slowly", returnNode));
         armorSuccess.addChoice(new Choice("Disturb its slumber", guardianCombat));
         armorFailure.addChoice(new Choice(DEFAULT_RETURN, returnNode));
         armorFailure.addChoice(new Choice("Take the helmet", guardianCombat));
@@ -107,11 +108,11 @@ public class StoryBuilder {
         );
     }
 
-    private Node proceedTo(Node nextNode){
+    private Node proceedTo(Node nextNode) {
         return new TransitionNode("You move on.", nextNode);
     }
 
-    private void checkInventoryFrom(Node node){
+    private void checkInventoryFrom(Node node) {
         node.addChoice(new Choice("Check belongings", inventory));
     }
 }

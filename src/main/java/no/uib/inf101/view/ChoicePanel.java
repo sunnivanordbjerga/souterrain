@@ -24,9 +24,9 @@ public class ChoicePanel extends JPanel {
 
         this.setBackground(theme.background());
         this.setLayout(new GridBagLayout());
-        buttonPanel.setLayout(new GridLayout(0,1,0,20));
+        buttonPanel.setLayout(new GridLayout(0, 1, 0, 20));
         buttonPanel.setBackground(theme.background());
-        buttonPanel.setBorder(new EmptyBorder(10,10,10,10));
+        buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         this.add(buttonPanel);
     }
 
@@ -62,7 +62,7 @@ public class ChoicePanel extends JPanel {
     private void configureButton(JButton button) {
         button.setBackground(theme.button());
         button.setForeground(theme.textColor());
-        button.setBorder(new EmptyBorder(15,15,15,15));
+        button.setBorder(new EmptyBorder(15, 15, 15, 15));
         button.setFont(theme.small());
         button.setAlignmentX(CENTER_ALIGNMENT);
     }

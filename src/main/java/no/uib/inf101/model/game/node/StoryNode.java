@@ -38,7 +38,7 @@ public class StoryNode extends AbstractNode {
     public StoryNode(String text, String returnText) {
         super(text);
         this.returnText = Objects.requireNonNull(returnText, "ReturnText cannot be null");
-        if(text.isBlank()){
+        if (text.isBlank()) {
             throw new IllegalArgumentException("ReturnText cannot be blank");
         }
     }

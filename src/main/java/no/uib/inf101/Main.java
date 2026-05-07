@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class Main {
     private static final String WINDOW_TITLE = "Souterrain";
-    private static final Dimension WINDOW_SIZE = new Dimension(450,680);
+    private static final Dimension WINDOW_SIZE = new Dimension(450, 680);
 
     /**
      * Initializes the {@link Game}, {@link GameView} and {@link GameController}

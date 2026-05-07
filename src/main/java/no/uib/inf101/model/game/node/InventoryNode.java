@@ -43,11 +43,12 @@ public class InventoryNode extends AbstractNode {
         }
     }
 
-    private void handleEquip(Player player, Loot item, Game game){
+    private void handleEquip(Player player, Loot item, Game game) {
         player.equip((Equipable) item);
         this.onEnter(game);
     }
-    private void handleUse(Player player, Consumable item, Game game){
+
+    private void handleUse(Player player, Consumable item, Game game) {
         item.use(player);
         this.onEnter(game);
     }
