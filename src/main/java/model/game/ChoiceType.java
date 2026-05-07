@@ -1,0 +1,12 @@
+package model.game;
+
+/**
+ * High level representation of system event choice outcomes
+ */
+public enum ChoiceType {
+    NORMAL,
+    USE,
+    EQUIP,
+    RESTART,
+    QUIT
+}

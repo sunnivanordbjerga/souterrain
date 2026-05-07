@@ -54,7 +54,7 @@ mvn clean install
 
 ```bash
 mvn compile
-java -cp target/classes no.uib.inf101.Main
+java -cp target/classes Main
 ```
 
 ### Test
