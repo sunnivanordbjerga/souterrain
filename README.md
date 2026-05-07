@@ -5,10 +5,10 @@ Esoteric Ebb, RoadWarden and Dungeons & Dragons.*
 
 ---
 ## Status
-Completed as part of INF101 (Spring 2026)
+
+Initially completed as part of INF101 (Spring 2026)
 
 ---
-
 ## Gameplay
 
 The player progresses through a dungeon by making choices
@@ -41,7 +41,7 @@ affecting the outcome of the story.
 ### Clone:
 
 ```bash
-git clone https://git.app.uib.no/ii/inf101/26v/assignments/sunniva.bjerga_empty.git
+git clone https://github.com/sunnivanordbjerga/souterrain.git
 ```
 
 ### Build:
@@ -77,7 +77,6 @@ Left-click on the choice you want as they appear
 
 ## Project Structure
 * [src/main/java](src/main/java) → Source code
-* [src/main/resources](src/main/resources) → Game assets (images, audio)
 * [src/test/java](src/test/java) → Unit tests
 
 ---
@@ -86,12 +85,12 @@ Left-click on the choice you want as they appear
 Sunniva Nord Bjerga
 
 ## Credits
-No external contributors as of April 2026
+No external contributors as of May 2026
 
 ---
 
 ## Bugs / Issues
-No known issues as of April 2026
+No known issues as of May 2026
 
 ---
 
