@@ -26,6 +26,9 @@ public class Enemy extends AbstractEntity implements Attacker {
      * @param maxHp       this enemy's maximum health points
      * @param minDamage   the minimum damage amount this enemy can deal
      * @param maxDamage   the maximum damage amount this enemy can deal
+     * @throws NullPointerException     if random or displayName is null
+     * @throws IllegalArgumentException if maxHp, minDamage or maxDamage < 0
+     *                                  or minDamage > maxDamage
      */
     public Enemy(String displayName, int maxHp, int minDamage, int maxDamage, Random random) {
         this(displayName, maxHp, minDamage, maxDamage, null, random);
@@ -38,17 +41,27 @@ public class Enemy extends AbstractEntity implements Attacker {
      * @param maxHp       this enemy's maximum health points
      * @param minDamage   the minimum damage amount this enemy can deal
      * @param maxDamage   the maximum damage amount this enemy can deal
+     * @throws NullPointerException     if random or displayName is null
+     * @throws IllegalArgumentException if maxHp, minDamage or maxDamage < 0
+     *                                  or minDamage > maxDamage
      */
     public Enemy(String displayName, int maxHp, int minDamage, int maxDamage, EquipmentType guaranteedDrop, Random random) {
         super(displayName, maxHp);
+        this.random = Objects.requireNonNull(random, "Random cannot be null");
+        if (minDamage > maxDamage) {
+            throw new IllegalArgumentException("minDamage must be lower than maxDamage. Got min " + minDamage + " and max  " + maxDamage);
+        }
+        if (minDamage < 0) {
+            throw new IllegalArgumentException("minDamage must be > 0. Got " + minDamage);
+        }
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
         this.guaranteedDrop = guaranteedDrop;
-        this.random = random;
     }
 
     @Override
     public int attack(Entity target) {
+        Objects.requireNonNull(target, "Target cannot be null");
         int damage = random.nextInt(minDamage, maxDamage + 1);
         target.takeDamage(damage);
 
@@ -61,6 +74,7 @@ public class Enemy extends AbstractEntity implements Attacker {
      *
      * @param factory the {@link LootFactory} used to generate this enemy's drops
      * @return the list of dropped loot
+     * @throws NullPointerException if factory is null
      */
     public List<Loot> dropLoot(LootFactory factory) {
         Objects.requireNonNull(factory, "LootFactory cannot be null.");
