@@ -1,7 +1,5 @@
 package model.entity;
 
-import model.Enemy;
-import model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

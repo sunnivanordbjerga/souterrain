@@ -1,7 +1,6 @@
 package model.game.node;
 
-
-import model.Player;
+import model.entity.Player;
 import model.game.Choice;
 import model.game.ChoiceType;
 import model.game.Game;
@@ -29,6 +28,7 @@ public class InventoryNode extends AbstractNode {
         clearChoices();
 
         if (inventory.isEmpty()) {
+            super.onEnter(game);
             game.log("Nothing but empty pockets.");
             addChoice(new Choice("Return", game.getPreviousNode()));
         } else {
@@ -41,6 +41,7 @@ public class InventoryNode extends AbstractNode {
             }
             addChoice(new Choice("Return", game.getPreviousNode()));
         }
+        game.setGameState(GameState.INVENTORY);
     }
 
     private void handleEquip(Player player, Loot item, Game game) {
