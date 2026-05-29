@@ -1,24 +1,28 @@
 # Souterrain
 
-*A simple narrative dungeon crawler inspired by games like
-Esoteric Ebb, RoadWarden and Dungeons & Dragons.*
+*A narrative-driven dungeon crawler inspired by games like
+Esoteric Ebb, RoadWarden and tabletop RPGs.*
 
 ---
+
 ## Status
 
-Initially completed as part of INF101 (Spring 2026)
+Initially developed as part of INF101 (Spring 2026). The project has since been expanded and polished independently.
 
 ---
+
 ## Gameplay
 
 The player progresses through a dungeon by making choices
-about exploration and surviving combat encounters,
-affecting the outcome of the story.
+during exploration and surviving autmated combat encounters,
+shaping their path through the game.
 
 ## Features
 
-* Graph-based story progression, with branching choices
-* Semi-random combat and exploration outcomes
+* Graph-based progression system, with branching choices
+* Automated combat encounters with semi-random outcomes
+* Inventory and equipment management
+* Health and stat tracking
 
 ---
 
@@ -65,13 +69,13 @@ To run unit tests
 mvn test
 ```
 
-This will also generate a [JaCoCo](https://www.jacoco.org/jacoco) code coverage report, which you can find
-in `target/site/jacoco/index.html`.
+[JaCoCo](https://www.jacoco.org/jacoco) coverage report will be generated in:
+`target/site/jacoco/index.html`.
 
 ---
 
 ## Controls
-Left-click on the choice you want as they appear
+Use the mouse to select choices as they appear on the screen
 
 ---
 
@@ -81,16 +85,14 @@ Left-click on the choice you want as they appear
 
 ---
 
+## Future Improvements
+* Additional enemy and item variety
+* Expanded story content
+* Save/load functionality
+* Improved UI presentation
+
 ## Authors
 Sunniva Nord Bjerga
-
-## Credits
-No external contributors as of May 2026
-
----
-
-## Bugs / Issues
-No known issues as of May 2026
 
 ---
 
