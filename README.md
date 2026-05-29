@@ -29,6 +29,7 @@ shaping their path through the game.
 ## Tech Stack
 
 * Java 25
+* Swing
 * Maven
 * JUnit 5
 * JaCoco
@@ -90,6 +91,8 @@ Use the mouse to select choices as they appear on the screen
 * Expanded story content
 * Save/load functionality
 * Improved UI presentation
+
+---
 
 ## Authors
 Sunniva Nord Bjerga
