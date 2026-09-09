@@ -1,5 +1,12 @@
 # Souterrain
 
+[![CI](https://github.com/sunnivanordbjerga/souterrain/actions/workflows/ci.yml/badge.svg)](https://github.com/sunnivanordbjerga/souterrain/actions/workflows/ci.yml)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sunnivanordbjerga_souterrain&metric=coverage&token=59d2fd306068737a5636a751d6cc605bcc55200e)](https://sonarcloud.io/summary/new_code?id=sunnivanordbjerga_souterrain)
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=sunnivanordbjerga_souterrain&metric=alert_status&token=59d2fd306068737a5636a751d6cc605bcc55200e)](https://sonarcloud.io/summary/new_code?id=sunnivanordbjerga_souterrain)
+![Java](https://img.shields.io/badge/Java-25-007396?logo=java&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-3.8+-C71A36?logo=apachemaven&logoColor=white)
+![JUnit](https://img.shields.io/badge/JUnit-6-blue.svg)
+
 *A narrative-driven dungeon crawler inspired by games like
 Esoteric Ebb, RoadWarden and tabletop RPGs.*
 
@@ -14,7 +21,7 @@ Initially developed as part of INF101 (Spring 2026). The project has since been 
 ## Gameplay
 
 The player progresses through a dungeon by making choices
-during exploration and surviving autmated combat encounters,
+during exploration and surviving automated combat encounters,
 shaping their path through the game.
 
 ## Features
