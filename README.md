@@ -94,10 +94,15 @@ Use the mouse to select choices as they appear on the screen
 ---
 
 ## Future Improvements
-* Additional enemy and item variety
-* Expanded story content
-* Save/load functionality
-* Improved UI presentation
+### Core:
+* Complete tests for core logic
+* Refactor string handling to an external JSON format
+* Implement save/load system
+### UI and immersion:
+* Animated text-rendering
+* Expanded story content and enemy/loot variety
+* Refine UI presentation
+* Add sound effects
 
 ---
 
