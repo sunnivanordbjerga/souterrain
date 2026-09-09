@@ -63,7 +63,7 @@ public class Player extends AbstractEntity implements Attacker {
     }
 
     /**
-     * Returns the sum of the {@link Player}s base defense and any equipment bonuses.
+     * Returns the sum of the {@link Player}'s base defense and any equipment bonuses.
      *
      * @return the player's total defense
      */
