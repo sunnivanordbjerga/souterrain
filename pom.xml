@@ -15,6 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
+        <sonar.organization>sunnivanordbjerga</sonar.organization>
     </properties>
 
     <dependencies>
@@ -47,7 +48,6 @@
                 <configuration>
                     <excludes>
                         <exclude>**/view/*</exclude>
-                        <exclude>**/consent/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -65,6 +65,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>5.0.0.4389</version>
             </plugin>
         </plugins>
         <pluginManagement>
