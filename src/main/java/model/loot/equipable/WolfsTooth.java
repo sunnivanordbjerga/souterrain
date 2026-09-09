@@ -1,6 +1,6 @@
 package model.loot.equipable;
 
-import model.entity.Player;
+import model.Player;
 
 /**
  * Represents the sword dropped by the dire-wolf, providing a

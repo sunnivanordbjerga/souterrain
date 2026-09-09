@@ -1,8 +1,8 @@
 package model.game;
 
 import controller.ControllableGame;
-import model.entity.Enemy;
-import model.entity.Player;
+import model.Enemy;
+import model.Player;
 import model.game.node.CombatNode;
 import model.game.node.Node;
 import model.loot.Loot;

@@ -1,6 +1,6 @@
 package model.loot.equipable;
 
-import model.entity.Player;
+import model.Player;
 
 import java.util.Objects;
 

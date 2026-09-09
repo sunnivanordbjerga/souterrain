@@ -1,6 +1,6 @@
 package model.game;
 
-import model.entity.Enemy;
+import model.Enemy;
 import model.game.node.*;
 import model.loot.equipable.EquipmentType;
 

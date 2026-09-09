@@ -1,6 +1,6 @@
 package model.game.node;
 
-import model.entity.Player;
+import model.Player;
 import model.game.Choice;
 import model.game.ChoiceType;
 import model.game.Game;
@@ -41,7 +41,6 @@ public class InventoryNode extends AbstractNode {
             }
             addChoice(new Choice("Return", game.getPreviousNode()));
         }
-        game.setGameState(GameState.INVENTORY);
     }
 
     private void handleEquip(Player player, Loot item, Game game) {

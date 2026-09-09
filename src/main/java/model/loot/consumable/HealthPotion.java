@@ -1,6 +1,6 @@
 package model.loot.consumable;
 
-import model.entity.Player;
+import model.Player;
 
 import java.util.Objects;
 

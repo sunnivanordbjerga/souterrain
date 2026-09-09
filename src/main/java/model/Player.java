@@ -1,4 +1,4 @@
-package model.entity;
+package model;
 
 import model.loot.Loot;
 import model.loot.equipable.Equipable;
