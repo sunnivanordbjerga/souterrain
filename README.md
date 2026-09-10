@@ -12,12 +12,6 @@ Esoteric Ebb, RoadWarden and tabletop RPGs.*
 
 ---
 
-## Status
-
-Initially developed as part of INF101 (Spring 2026). The project is currently being expanded and polished independently.
-
----
-
 ## Gameplay
 
 The player progresses through a dungeon by making choices
@@ -30,6 +24,12 @@ shaping their path through the game.
 * Automated combat encounters with semi-random outcomes
 * Inventory and equipment management
 * Health and stat tracking
+
+---
+
+## Status
+
+Initially developed as part of INF101 (Spring 2026). The project is currently being expanded and polished independently.
 
 ---
 
@@ -50,19 +50,19 @@ shaping their path through the game.
 * [JDK 25](https://jdk.java.net/25/) or newer
 * [Maven 3.9+](https://maven.apache.org/download.cgi#CurrentMaven)
 
-### Clone:
+### Clone
 
 ```bash
 git clone https://github.com/sunnivanordbjerga/souterrain.git
 ```
 
-### Build:
+### Build
 
 ```bash
 mvn clean install
 ```
 
-### Run:
+### Run
 
 ```bash
 mvn compile
@@ -103,6 +103,8 @@ Use the mouse to select choices as they appear on the screen
 * Expanded story content and enemy/loot variety
 * Refine UI presentation
 * Add sound effects
+
+An overview of current development tasks can be found on the [issue board](https://github.com/users/sunnivanordbjerga/projects/1)
 
 ---
 
