@@ -14,7 +14,7 @@ Esoteric Ebb, RoadWarden and tabletop RPGs.*
 
 ## Status
 
-Initially developed as part of INF101 (Spring 2026). The project has since been expanded and polished independently.
+Initially developed as part of INF101 (Spring 2026). The project is currently being expanded and polished independently.
 
 ---
 
